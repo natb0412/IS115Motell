@@ -2,23 +2,27 @@
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Tab One</label>
-  <div class="tab">
-    <h2>Tab One Content</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="tab"> 
+    <h2>Booking</h2>
+    <form method="POST">
+    Navn: <input type="text" name="navn" value="<?php echo $navn; ?>"><br><br>
+    Mobilnummer: <input type="text" name="mobil" value="<?php echo $mobil; ?>"><br><br>
+    E-post: <input type="text" name="epost" value="<?php echo $epost; ?>"><br><br>
+    <input type="submit" value="Registrer">
+</form>
   </div>
   
   <input type="radio" name="tabs" id="tabtwo">
   <label for="tabtwo">Tab Two</label>
   <div class="tab">
     <h2>Tab Two Content</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem </p>
   </div>
   
   <input type="radio" name="tabs" id="tabthree">
   <label for="tabthree">Tab Three</label>
   <div class="tab">
     <h2>Tab Three Content</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+    <p>Lorem ipsum </p>
   </div>
 </div>
