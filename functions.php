@@ -53,8 +53,15 @@ function validate_dates($check_in, $check_out)
 }
 
 
-// Logikk for å finde ledige rom
+// Logikk for å finne ledige rom
 function find_available_rooms($check_in, $check_out, $adults, $children)
 {
+    $rooms = load_data("rooms");
+    $bookings = load_data("bookings");
+    $available_rooms = [];
 
+    foreach($rooms as $room)
+    {
+        
+    }
 }
