@@ -87,6 +87,8 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
                     
                 }
             }
+            //hvis alle sjekker går gjennom, og is_available fortsatt er true
+            //så legges rommet til i available_rooms arrayen
             if($is_available)
             {
                 $available_rooms[] = $room;
@@ -94,4 +96,24 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
         }
     }
     return $available_rooms;
+}
+
+
+function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
+{
+    //laster inn eksisterende bookinger
+    $bookings = load_data("bookings");
+    $new_booking = 
+    [
+        "id" => "BOOK" . (count($bookings) + 1),
+        "room_id" => $room_id,
+        "guest_name" => $guest_name,
+        "check_in" => $check_in,
+        "check_out" => $check_out,
+        "adults" => $adults,
+        "children" => $children
+    ];
+    $bookings[] = $new_booking;
+    save_data("bookings", $bookings);
+    return $new_booking["id"];
 }
