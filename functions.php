@@ -87,6 +87,8 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
                     
                 }
             }
+            //hvis alle sjekker går gjennom, og is_available fortsatt er true
+            //så legges rommet til i available_rooms arrayen
             if($is_available)
             {
                 $available_rooms[] = $room;
