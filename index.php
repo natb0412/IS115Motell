@@ -1,5 +1,5 @@
 <!--Link to an external stylesheet-->
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="sites/css/main.css">
 
 <!--Container for tabbed content-->
 <div class="tabs">
@@ -10,9 +10,8 @@
     <h2>Log in</h2>
     <form method="post" class="vertical-form">
     
-       
     <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="password" placeholder="Password" required>
             
             <button type="submit">Log in</button>
        </form>

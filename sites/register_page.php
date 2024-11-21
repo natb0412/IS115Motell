@@ -11,14 +11,16 @@
     <form method="post" class="vertical-form">
     
     <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="text" name="Name" placeholder="Name" required>
+            
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
            
             <select id="user_type" name="user_type" required>
             <option value="guest">Guest User</option>
             <option value="admin">Admin User</option>
-          
-        </select>
+            </select>
+
             <button type="submit">Register</button>
         </form>
             <p>Already have an account? <a href="../index.php">Login here</a></p>   
