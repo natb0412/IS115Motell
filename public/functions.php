@@ -35,8 +35,7 @@ function is_admin()
 //validering for dato i booking. Returner false hvis du ikke oppfyller krav
 function validate_dates($check_in, $check_out)
 {
-    //Initialiserer 3 variabler, setter sammen check_in og check_out
-    //med gitte datoer
+    //Initialiserer 3 variabler, setter sammen check_in og check_out med gitte datoer
     $now = newdatetime();
     $check_in_date = datetime::createformat("d-m-Y", $check_in);
     $check_out_date = datetime::createformat("d-m-Y", $check_out);
@@ -71,7 +70,7 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
         if($room["capacity"]["adults"] >= $adults && $room["capacity"]["children"] >= $children)
         {
             $is_available = true;
-            //Sjekke opp booking mot andre datoer, for og forhindre overlapp
+            //Sjekke opp booking mot andre datoer, for å forhindre overlapp
             //Eksisterer det overlapp settes is_available til false
             foreach ($bookings as $booking)
             {
@@ -103,6 +102,8 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
 {
     //laster inn eksisterende bookinger
     $bookings = load_data("bookings");
+
+    //lager ny booking
     $new_booking = 
     [
         "id" => "BOOK" . (count($bookings) + 1),
@@ -113,6 +114,7 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
         "adults" => $adults,
         "children" => $children
     ];
+    //legger til booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
     $bookings[] = $new_booking;
     save_data("bookings", $bookings);
     return $new_booking["id"];

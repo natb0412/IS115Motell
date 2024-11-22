@@ -1,9 +1,11 @@
 /**
  * Tabs
  */
+
+ 
 .tabs {
 	display: flex;
-	flex-wrap: wrap; // make sure it wraps
+	flex-wrap: wrap;  //make sure it wraps
 }
 .tabs label {
 	order: 1; // Put the labels first
