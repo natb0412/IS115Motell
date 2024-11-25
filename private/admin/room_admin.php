@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     elseif(isset($_POST["set_unavailable"]))
     {
-        $room_id = $_POST["roomd_id"];
+        $room_id = $_POST["room_id"];
         $start_date = $_POST["start_date"];
         $end_date = $_POST["end_date"];
         set_room_unavailable($room_id, $start_date, $end_date);
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <h1>Administrasjon - <?php echo MOTEL_NAME; ?></h1>
 
     <h2>Rom administrasjon</h2>
-    <?php foreach ($rooms as $room): ?>
+    <?php foreach ($rooms as &$room): ?>
         <form method="post">
             <h3>Rom <?php echo htmlspecialchars($room['name']); ?></h3>
             <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             </label>
             <label>
                 Beskrivelse:
-                <textarea name="description"><?php echo htmlspecialchars($room['description'] ?? ''); ?></textarea>
+                <textarea name="description"><?php echo htmlspecialchars($room['description']); ?></textarea>
             </label>
             <button type="submit" name="update_room">Oppdater rom</button>
         </form>
