@@ -136,14 +136,22 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     return $new_booking["id"];
 }
 
+function is_room_available($room_id)
+{
+    if(in_array(($start_date, $end_date), "booking"))
+    {
+        echo "Room available";
+    }
+}
+
 
 //ADMINFUNKSJONALITET
 
+//Oppdatering av beskrivelse
 //Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 
 //Oppdaterer variabler med ny info
 function update_room($room_id, $name, $description)
 {
-    echo "Updating room ID: {$room_id} with name: {$name} and description: {$description}";
     $rooms = load_data("rooms");
     foreach($rooms as &$room)
     {
@@ -151,12 +159,12 @@ function update_room($room_id, $name, $description)
         {
             $room["name"] = $name;
             $room["description"] = $description;
+            $description = $room["description"];
             break;
         }
     }
     
     save_data("rooms", $rooms);
-    echo "Updating room ID: {$room_id} with name: {$name} and description: {$description}";
 }
 
 
@@ -164,7 +172,7 @@ function update_room($room_id, $name, $description)
 //legger til i unavailable_periods, og lagrer data i fil
 function set_room_unavailable($room_id, $start_date, $end_date)
 {
-    $unavailable_periods = load_data("unavailable_periods");
+    $unavailable_periods = load_data("booking");
 
     if($start_date < $end_date)
     {
@@ -175,7 +183,7 @@ function set_room_unavailable($room_id, $start_date, $end_date)
             "end_date" => $end_date
         ];
 
-        save_data("uanavailable_periods", $unavailable_periods);
+        save_data("booking", $unavailable_periods);
         return true;
     }
     else

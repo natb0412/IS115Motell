@@ -5,7 +5,6 @@ require_once "../../public/functions.php";
 
 
 $rooms = load_data("rooms");
-var_dump($rooms);
 
 
 
@@ -49,8 +48,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <input type="text" name="name" value="<?php echo htmlspecialchars($room['name']); ?>" required>
             </label>
             <label>
+                <br>
+                Romtype: <?php echo $room['type']; ?>
+                <br>
+            </label>
+            <label>
+                Tilgjengelig: <?php echo $is_available; ?>
+            </label>
+            <label>
                 Beskrivelse:
-                <textarea name="description"><?php echo htmlspecialchars($room['description']); ?></textarea>
+                <textarea name="description"><?php echo htmlspecialchars($room["description"]); ?></textarea>
             </label>
             <button type="submit" name="update_room">Oppdater rom</button>
         </form>
@@ -60,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
             <label>
                 Fra dato:
-                <input type="date" name="start_date" required>
+                <input type="date" name="start_date" required value="<?php echo $booking["start_date"]; ?>">
             </label>
             <label>
                 Til dato:
