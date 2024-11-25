@@ -54,4 +54,34 @@ return array (
     'start_date' => '2024-11-26',
     'end_date' => '2024-11-29',
   ),
+  9 => 
+  array (
+    'room_id' => '1',
+    'start_date' => '2024-11-26',
+    'end_date' => '2024-11-29',
+  ),
+  10 => 
+  array (
+    'room_id' => '10',
+    'start_date' => '2024-11-27',
+    'end_date' => '2024-11-28',
+  ),
+  11 => 
+  array (
+    'room_id' => '10',
+    'start_date' => '2024-11-27',
+    'end_date' => '2024-11-28',
+  ),
+  12 => 
+  array (
+    'room_id' => '10',
+    'start_date' => '2000-12-23',
+    'end_date' => '42323-03-12',
+  ),
+  13 => 
+  array (
+    'room_id' => '10',
+    'start_date' => '2000-12-23',
+    'end_date' => '42323-03-12',
+  ),
 );

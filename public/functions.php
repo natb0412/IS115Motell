@@ -136,6 +136,14 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     return $new_booking["id"];
 }
 
+function is_room_available($room_id)
+{
+    if(in_array(($start_date, $end_date), "booking"))
+    {
+        echo "Room available";
+    }
+}
+
 
 //ADMINFUNKSJONALITET
 

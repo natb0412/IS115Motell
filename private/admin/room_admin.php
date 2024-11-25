@@ -53,6 +53,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <br>
             </label>
             <label>
+                Tilgjengelig: <?php echo $is_available; ?>
+            </label>
+            <label>
                 Beskrivelse:
                 <textarea name="description"><?php echo htmlspecialchars($room["description"]); ?></textarea>
             </label>
@@ -64,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             <input type="hidden" name="room_id" value="<?php echo $room['id']; ?>">
             <label>
                 Fra dato:
-                <input type="date" name="start_date" required value="<?php echo $unavailable_periods["start_date"]; ?>">
+                <input type="date" name="start_date" required value="<?php echo $booking["start_date"]; ?>">
             </label>
             <label>
                 Til dato:
