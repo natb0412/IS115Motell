@@ -20,9 +20,13 @@ function load_data($file)
 //Lagre data i parentDir/data/file.php
 function save_data($file, $data)
 {
-    $content = "<php\nreturn " . var_export($data, true) . ";\n";
+    $content = "<?php\nreturn " . var_export($data, true) . ";\n";
     $filepath1 = DATA_PATH . "/" . $file . ".php";
     file_put_contents($filepath1, $content);
+    if (file_put_contents($filepath1, $content) === false)
+    {
+        throw new Exception("Failed to write data to file: " . $filepath1);
+    }
 }
 
 
@@ -139,8 +143,9 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
 //Oppdaterer variabler med ny info
 function update_room($room_id, $name, $description)
 {
+    echo "Updating room ID: {$room_id} with name: {$name} and description: {$description}";
     $rooms = load_data("rooms");
-    foreach($rooms as $room)
+    foreach($rooms as &$room)
     {
         if($room["id"] == $room_id)
         {
@@ -151,6 +156,7 @@ function update_room($room_id, $name, $description)
     }
     
     save_data("rooms", $rooms);
+    echo "Updating room ID: {$room_id} with name: {$name} and description: {$description}";
 }
 
 
