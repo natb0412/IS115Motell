@@ -26,12 +26,17 @@
             <option value="suite">Suite</option>
         </select>
       <!--Input for number of adult guests-->
-        <label for="adult_guests">Number of Adult Guests:</label>
-        <input type="number" id="adult_guests" name="adult_guests" min="1" max="4" required>
+        <label for="adults">Number of Adult Guests:</label>
+        <input type="number" id="adults" name="adults" min="1" max="2" required>
 
          <!--Input for number of child guests-->
-        <label for="child_guests">Number of Child Guests:</label>
-        <input type="number" id="child_guests" name="child_guests" min="0" max="4" required>
+        <label for="children">Number of Child Guests:</label>
+        <input type="number" id="children" name="children" min="0" max="3" required>
+
+       <!--Input for guest_name-->
+       <label for="guest_name">Guests Name:</label>
+        <input type="name" id="guest_name" name="guest_name"  required>
+
 
         <!--Submit button to send form data-->
         <input type="submit" value="Book Now">
