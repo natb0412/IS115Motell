@@ -92,9 +92,9 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
             {
                 if ($booking["room_id"] == $room["id"])
                 {
-                    if (($check_in >= $booking["check_in"] && $check_in < $booking["check_out"]) ||
-                    ($check_out > $booking["check_in"] && $check_out <= $booking["check_out"]) ||
-                    ($check_in <= $booking["check_in"] && $check_out >= $booking["check_out"]))
+                    if (($start_date >= $booking["start_date"] && $start_date < $booking["end_date"]) ||
+                    ($end_date > $booking["start_date"] && $end_date <= $booking["end_date"]) ||
+                    ($start_date <= $booking["start_date"] && $check_out >= $booking["end_date"]))
                     {
                         $is_available = false;
                         break;
@@ -136,13 +136,29 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     return $new_booking["id"];
 }
 
-function is_room_available($room_id)
+function is_room_available($room_id, $start_date, $end_date)
 {
-    if(in_array(($start_date, $end_date), "booking"))
+    $bookings = load_data("booking");
+    foreach ($bookings as $booking)
     {
-        echo "Room available";
+        if ($booking["room_id"] == $room_id)
+        {
+            if (($start_date >= $booking["start_date"] && $start_date < $booking["end_date"]) 
+            ||
+            ($end_date > $booking["start_date"] && $end_date <= $booking["end_date"]) 
+            ||
+            ($start_date <= $booking["start_date"] && $end_date >= $booking["end_date"]))
+            {
+            return false;
+            echo "Ikke tilgjengelig";
+            }
+        }
     }
+    return true;
+    echo "Tilgjengelig";
 }
+
+
 
 
 //ADMINFUNKSJONALITET

@@ -5,8 +5,7 @@ require_once "../../public/functions.php";
 
 
 $rooms = load_data("rooms");
-
-
+$bookings = load_data("booking");
 
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -25,6 +24,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         set_room_unavailable($room_id, $start_date, $end_date);
     }
 }
+
+foreach ($rooms as &$room)
+    {
+        $today = date('Y-m-d');
+        $tomorrow = date('Y-m-d', strtotime('+1 day'));
+        $room['is_available'] = is_room_available($room['id'], $today, $tomorrow);
+    }
 
 ?>
 
@@ -51,9 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <br>
                 Romtype: <?php echo $room['type']; ?>
                 <br>
-            </label>
-            <label>
-                Tilgjengelig: <?php echo $is_available; ?>
+                <p>Status: <?php echo $room['is_available'] ? 'Tilgjengelig' : 'Ikke tilgjengelig'; ?></p>
             </label>
             <label>
                 Beskrivelse:
