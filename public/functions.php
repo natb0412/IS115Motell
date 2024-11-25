@@ -1,9 +1,19 @@
 <?php
 
-//Laste inn data fra fil i parentDir/data/file.php
+//DATALAGRING OG SENDING
+
+//Laster inn data. Config inneholder koding for BASE og DATA_PATH
 function load_data($file)
 {
-    return include __DIR__ . "/data/" . $file . '.php';
+    $filepath = DATA_PATH . "/" . $file . ".php";
+    if(file_exists($filepath))
+    {
+        return include $filepath;
+    }
+    else
+    {
+        throw new Exception("File not found: " . $filepath);
+    }
 }
 
 
@@ -11,10 +21,12 @@ function load_data($file)
 function save_data($file, $data)
 {
     $content = "<php\nreturn " . var_export($data, true) . ";\n";
-    file_put_contents(__DIR__ . "/data/" . $file . ".php", $content);
+    $filepath1 = DATA_PATH . "/" . $file . ".php";
+    file_put_contents($filepath1, $content);
 }
 
 
+//SJEKKING AV BRUKER
 
 //Sjekker om bruker er innlogget
 function is_logged_in()
@@ -30,7 +42,7 @@ function is_admin()
     return isset($_SESSION["user_id"]) && $_SESSION["is_admin"];
 }
 
-
+//ALT AV ROMBOOKING
 
 //validering for dato i booking. Returner false hvis du ikke oppfyller krav
 function validate_dates($check_in, $check_out)
@@ -43,7 +55,7 @@ function validate_dates($check_in, $check_out)
     //Sjekker om bruker har oppgitt dato
     if(!$check_in_date_in  || !$check_out_datecheck_out)
     {
-        reutrn false;
+        return false;
     }
 
     //returnerer false hvis noen prøver å booke "negative" dager
@@ -119,3 +131,63 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     save_data("bookings", $bookings);
     return $new_booking["id"];
 }
+
+
+//ADMINFUNKSJONALITET
+
+//Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 
+//Oppdaterer variabler med ny info
+function update_room($room_id, $name, $description)
+{
+    $rooms = load_data("rooms");
+    foreach($rooms as $room)
+    {
+        if($room["id"] == $room_id)
+        {
+            $room["name"] = $name;
+            $room["description"] = $description;
+            break;
+        }
+    }
+    
+    save_data("rooms", $rooms);
+}
+
+
+//loader data fra unavailable_periods, lager ny array med room_id og dato range
+//legger til i unavailable_periods, og lagrer data i fil
+function set_room_unavailable($room_id, $start_date, $end_date)
+{
+    $unavailable_periods = load_data("unavailable_periods");
+
+    if($start_date < $end_date)
+    {
+        $unavailable_periods[] = 
+        [
+            "room_id" => $room_id,
+            "start_date" => $start_date,
+            "end_date" => $end_date
+        ];
+
+        save_data("uanavailable_periods", $unavailable_periods);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function get_room_by_id($room_id)
+    {
+        $rooms = load_data("rooms");
+        foreach ($rooms as $room)
+        {
+            if($room["id"] == $room_id)
+            {
+                return $room;
+            }
+        }
+
+        return null;
+    }
