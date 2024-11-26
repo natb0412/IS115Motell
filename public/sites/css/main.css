@@ -1,20 +1,18 @@
-/**
- * Tabs
+/*
+ Tabs
  */
-
- 
 .tabs {
 	display: flex;
-	flex-wrap: wrap;  //make sure it wraps
+	flex-wrap: wrap;  /*make sure it wraps*/
 }
 .tabs label {
-	order: 1; // Put the labels first
+	order: 1; /* Put the labels first*/
 	display: block;
 	padding: 1rem;
 	margin-right: 0.2rem;
 }
 .tabs .tab {
-  order: 99; // Put the tabs last
+  order: 99; /* Put the tabs last*/
   flex-grow: 1;
 	width: 100%;
 	display: flex;
@@ -31,24 +29,24 @@
 	display: block;
 }
 
-.vertical-form {
+.vertical_form { /*Used for the form to be vertical */
     display: static;
     flex-direction: column;
     gap: 10px;
 }
 
-.vertical-form label {
+.vertical_form label {
     margin-bottom: 10px;
 }
 
-.vertical-form input,
-.vertical-form select {
+.vertical_form input,
+.vertical_form select {
     width: 100%;
     padding: 10px;
 }
 
-/**
- * Generic Styling
+/*
+  Generic Styling of the site
 */
 body {
   background: #666699;
