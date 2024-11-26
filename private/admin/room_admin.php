@@ -36,7 +36,7 @@ foreach ($rooms as &$room)
     {
         $today = date('Y-m-d');
         $tomorrow = date('Y-m-d', strtotime('+1 day'));
-    //is_room_available ligger i functions
+    //is_room_available er en funksjon
         $room['is_available'] = is_room_available($room['id'], $today, $tomorrow);
     }
 

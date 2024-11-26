@@ -1,5 +1,7 @@
 <?php
 return array (
+
+//multidimensjonal matrise, hver nøkkel inneholder en array med gitte standardnøkler, og forskjellige verdier
   0 => 
   array (
     'room_id' => '1',

@@ -2,7 +2,7 @@
 
 //DATALAGRING OG SENDING
 
-//Laster inn data. Config inneholder koding for BASE og DATA_PATH
+//Laster inn data. Config inneholder konstanter for BASE og DATA_PATH
 function load_data($file)
 {
     $filepath = DATA_PATH . "/" . $file . ".php";
@@ -17,21 +17,22 @@ function load_data($file)
 }
 
 
-//Lagre data i parentDir/data/file.php
+
+//Lagre data i DATA_PATH/file.php
 function save_data($file, $data)
 {
     $content = "<?php\nreturn " . var_export($data, true) . ";\n";
     $filepath1 = DATA_PATH . "/" . $file . ".php";
     file_put_contents($filepath1, $content);
-    if (file_put_contents($filepath1, $content) === false)
-    {
-        throw new Exception("Failed to write data to file: " . $filepath1);
-    }
+        if (file_put_contents($filepath1, $content) === false)
+        {
+            throw new Exception("Failed to write data to file: " . $filepath1);
+        }
 }
 
 
-//SJEKKING AV BRUKER
 
+//SJEKKING AV BRUKER
 //Sjekker om bruker er innlogget
 function is_logged_in()
 {
@@ -46,8 +47,9 @@ function is_admin()
     return isset($_SESSION["user_id"]) && $_SESSION["is_admin"];
 }
 
-//ALT AV ROMBOOKING
 
+
+//ALT AV ROMBOOKING
 //validering for dato i booking. Returner false hvis du ikke oppfyller krav
 function validate_dates($check_in, $check_out)
 {
@@ -57,7 +59,7 @@ function validate_dates($check_in, $check_out)
     $check_out_date = datetime::createformat("d-m-Y", $check_out);
 
     //Sjekker om bruker har oppgitt dato
-    if(!$check_in_date_in  || !$check_out_datecheck_out)
+    if(!$check_in_date || !$check_out_date)
     {
         return false;
     }
@@ -70,6 +72,7 @@ function validate_dates($check_in, $check_out)
 
     return true;
 }
+
 
 
 // Logikk for å finne ledige rom
@@ -114,6 +117,7 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
 }
 
 
+
 function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
 {
     //laster inn eksisterende bookinger
@@ -130,12 +134,16 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
         "adults" => $adults,
         "children" => $children
     ];
-    //legger til booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
+    //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
     $bookings[] = $new_booking;
     save_data("bookings", $bookings);
     return $new_booking["id"];
 }
 
+
+
+//ADMINFUNKSJONALITET
+//funksjon til admin "dashboard". Viser om et rom er booka for idag eller imorgen
 function is_room_available($room_id, $start_date, $end_date)
 {
     $bookings = load_data("booking");
@@ -160,12 +168,8 @@ function is_room_available($room_id, $start_date, $end_date)
 
 
 
-
-//ADMINFUNKSJONALITET
-
-//Oppdatering av beskrivelse
-//Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 
 //Oppdaterer variabler med ny info
+//itererer gjennom alle rom, og setter verdien i matrisen til variablen i parameteret
 function update_room($room_id, $name, $description)
 {
     $rooms = load_data("rooms");
@@ -182,6 +186,7 @@ function update_room($room_id, $name, $description)
     
     save_data("rooms", $rooms);
 }
+
 
 
 //loader data fra unavailable_periods, lager ny array med room_id og dato range
@@ -207,6 +212,7 @@ function set_room_unavailable($room_id, $start_date, $end_date)
         return false;
     }
 }
+
 
 
 //laster inn et rom basert på romID

@@ -1,18 +1,14 @@
 <?php
 return array (
-  0 => 
+  0 => //nøkkel for hvert rom
   array (
-    'id' => 1,
-    'type' => 'single',
-    'name' => '101',
-    'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
-    'status' => 'available',
+    'id' => 1, //unik ID for rom, brukes for identifisering
+    'type' => 'single', //romtype
+    'name' => '101', //vises til brukeren, så de skal slippe å bruke id på rom
+    'floor' => 1, //etasje, skal potensielt fjernes
+    'capacity' => ROOM_TYPE["single"]["capacity"], //bruker konstanten for kapasitet
+    'description' => ROOM_DESCRIPTIONS["single"], //bruker konstanten for beskrivelse
+    'status' => 'available', //skal endres basert på booking
   ),
   1 => 
   array (
@@ -20,12 +16,8 @@ return array (
     'type' => 'single',
     'name' => '102',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   2 => 
@@ -34,12 +26,8 @@ return array (
     'type' => 'single',
     'name' => '103',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   3 => 
@@ -48,12 +36,8 @@ return array (
     'type' => 'single',
     'name' => '104',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   4 => 
@@ -62,12 +46,8 @@ return array (
     'type' => 'single',
     'name' => '105',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   5 => 
@@ -76,12 +56,8 @@ return array (
     'type' => 'single',
     'name' => '106',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   6 => 
@@ -90,12 +66,8 @@ return array (
     'type' => 'single',
     'name' => '107',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   7 => 
@@ -104,12 +76,8 @@ return array (
     'type' => 'single',
     'name' => '108',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   8 => 
@@ -118,12 +86,8 @@ return array (
     'type' => 'single',
     'name' => '109',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   9 => 
@@ -132,12 +96,8 @@ return array (
     'type' => 'single',
     'name' => '110',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["single"],
     'status' => 'available',
   ),
   10 => 
@@ -146,12 +106,8 @@ return array (
     'type' => 'double',
     'name' => '111',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   11 => 
@@ -160,12 +116,8 @@ return array (
     'type' => 'double',
     'name' => '112',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   12 => 
@@ -174,12 +126,8 @@ return array (
     'type' => 'double',
     'name' => '113',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   13 => 
@@ -188,12 +136,8 @@ return array (
     'type' => 'double',
     'name' => '114',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   14 => 
@@ -202,12 +146,8 @@ return array (
     'type' => 'double',
     'name' => '115',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   15 => 
@@ -216,12 +156,8 @@ return array (
     'type' => 'double',
     'name' => '116',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   16 => 
@@ -230,12 +166,8 @@ return array (
     'type' => 'double',
     'name' => '117',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   17 => 
@@ -244,12 +176,8 @@ return array (
     'type' => 'double',
     'name' => '118',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   18 => 
@@ -258,12 +186,8 @@ return array (
     'type' => 'double',
     'name' => '119',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 2,
-      'children' => 2,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["double"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["double"],
     'status' => 'available',
   ),
   19 => 
@@ -272,12 +196,8 @@ return array (
     'type' => 'family',
     'name' => '120',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
   20 => 
@@ -286,12 +206,8 @@ return array (
     'type' => 'family',
     'name' => '121',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
   21 => 
@@ -300,12 +216,8 @@ return array (
     'type' => 'family',
     'name' => '122',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
   22 => 
@@ -314,12 +226,8 @@ return array (
     'type' => 'family',
     'name' => '123',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
   23 => 
@@ -328,12 +236,8 @@ return array (
     'type' => 'family',
     'name' => '124',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
   24 => 
@@ -342,12 +246,8 @@ return array (
     'type' => 'family',
     'name' => '125',
     'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 3,
-      'children' => 3,
-    ),
-    'description' => '',
+    'capacity' => ROOM_TYPE["family"]["capacity"],
+    'description' => ROOM_DESCRIPTIONS["family"],
     'status' => 'available',
   ),
 );
