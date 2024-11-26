@@ -24,10 +24,10 @@ function save_data($file, $data)
     $content = "<?php\nreturn " . var_export($data, true) . ";\n";
     $filepath1 = DATA_PATH . "/" . $file . ".php";
     file_put_contents($filepath1, $content);
-    if (file_put_contents($filepath1, $content) === false)
-    {
-        throw new Exception("Failed to write data to file: " . $filepath1);
-    }
+        if (file_put_contents($filepath1, $content) === false)
+        {
+            throw new Exception("Failed to write data to file: " . $filepath1);
+        }
 }
 
 
@@ -168,9 +168,8 @@ function is_room_available($room_id, $start_date, $end_date)
 
 
 
-//Oppdatering av beskrivelse
-//Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 
 //Oppdaterer variabler med ny info
+//itererer gjennom alle rom, og setter verdien i matrisen til variablen i parameteret
 function update_room($room_id, $name, $description)
 {
     $rooms = load_data("rooms");
