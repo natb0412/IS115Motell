@@ -1,11 +1,11 @@
 <?php
-
-require_once "../../public/config.php";
+//Includes functions
 require_once "../../public/functions.php";
 
-
+//loads inn user
 $users = load_data("user");
 
+//Checks if there is an post
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if(isset($_POST["register_user"]))
@@ -20,8 +20,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // Check if passwords match
         if ($password === $confirm_password) 
         {
-          register_user($username, $name, $password, $user_type);
-        } 
+          $_SESSION['user_id'] = $username; // Use username as session identifier
+          header("Location: booking_page.php");
+          exit();
+        }
       else 
         {
           echo "Passwords do not match. Please try again.";
@@ -30,6 +32,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 
+<!--Link to external CSS file-->
 <link rel="stylesheet" href="css/main.css">
 
 <!--Container for tabs-->
@@ -57,6 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
             <button type="submit" name="register_user">Register</button>
         </form>
+         <!--Displays message with link to login page-->
             <p>Already have an account? <a href="../index.php">Login here</a></p>   
     
   </div>

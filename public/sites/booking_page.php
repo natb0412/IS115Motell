@@ -1,3 +1,4 @@
+<!--Link to external CSS file-->
 <link rel="stylesheet" href="css/main.css">
 
 <!--Container for tabs-->
