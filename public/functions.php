@@ -208,6 +208,8 @@ function set_room_unavailable($room_id, $start_date, $end_date)
     }
 }
 
+
+//laster inn et rom basert på romID
 function get_room_by_id($room_id)
     {
         $rooms = load_data("rooms");
