@@ -57,7 +57,7 @@ function validate_dates($check_in, $check_out)
     $check_out_date = datetime::createformat("d-m-Y", $check_out);
 
     //Sjekker om bruker har oppgitt dato
-    if(!$check_in_date_in  || !$check_out_datecheck_out)
+    if(!$check_in_date || !$check_out_date)
     {
         return false;
     }
@@ -130,11 +130,14 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
         "adults" => $adults,
         "children" => $children
     ];
-    //legger til booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
+    //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
     $bookings[] = $new_booking;
     save_data("bookings", $bookings);
     return $new_booking["id"];
 }
+
+
+//ADMINFUNKSJONALITET
 
 function is_room_available($room_id, $start_date, $end_date)
 {
@@ -158,10 +161,6 @@ function is_room_available($room_id, $start_date, $end_date)
     echo "Tilgjengelig";
 }
 
-
-
-
-//ADMINFUNKSJONALITET
 
 //Oppdatering av beskrivelse
 //Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 

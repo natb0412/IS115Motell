@@ -1,18 +1,14 @@
 <?php
 return array (
-  0 => 
+  0 => //nøkkel for hvert rom
   array (
-    'id' => 1,
-    'type' => 'single',
-    'name' => '101',
-    'floor' => 1,
-    'capacity' => 
-    array (
-      'adults' => 1,
-      'children' => 1,
-    ),
-    'description' => 'edsf',
-    'status' => 'available',
+    'id' => 1, //unik ID for rom, brukes for identifisering
+    'type' => 'single', //romtype
+    'name' => '101', //vises til brukeren, så de skal slippe å bruke id på rom
+    'floor' => 1, //etasje, skal potensielt fjernes
+    'capacity' => ROOM_TYPE["single"]["capacity"],
+    'description' => 'edsf', //placeholder verdi
+    'status' => 'available', //skal endres basert på booking
   ),
   1 => 
   array (
