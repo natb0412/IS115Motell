@@ -1,14 +1,13 @@
-<!--Link to an external stylesheet-->
 <link rel="stylesheet" href="css/main.css">
 
-<!--Container for tabbed content-->
+<!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Booking</label>
   
   <div class="tab">
     <h2>Booking</h2>
-    <form method="post" class="vertical-form">
+    <form method="post" class="vertical_form">
     
     <!--Input for check-in date -->    
     <label for="check_in">Check-in Dato:</label>
@@ -36,7 +35,6 @@
        <!--Input for guest_name-->
        <label for="guest_name">Guests Name:</label>
         <input type="name" id="guest_name" name="guest_name"  required>
-
 
         <!--Submit button to send form data-->
         <input type="submit" value="Book Now">

@@ -1,14 +1,13 @@
-<!--Link to an external stylesheet-->
 <link rel="stylesheet" href="sites/css/main.css">
 
-<!--Container for tabbed content-->
+<!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Log in</label>
   
   <div class="tab">
     <h2>Log in</h2>
-    <form method="post" class="vertical-form">
+    <form method="post" class="vertical_form">
     
     <input type="text" name="username" placeholder="Username" required>
     <input type="password" name="password" placeholder="Password" required>
