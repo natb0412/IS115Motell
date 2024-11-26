@@ -2,7 +2,7 @@
 
 //DATALAGRING OG SENDING
 
-//Laster inn data. Config inneholder koding for BASE og DATA_PATH
+//Laster inn data. Config inneholder konstanter for BASE og DATA_PATH
 function load_data($file)
 {
     $filepath = DATA_PATH . "/" . $file . ".php";
@@ -17,7 +17,8 @@ function load_data($file)
 }
 
 
-//Lagre data i parentDir/data/file.php
+
+//Lagre data i DATA_PATH/file.php
 function save_data($file, $data)
 {
     $content = "<?php\nreturn " . var_export($data, true) . ";\n";
@@ -30,8 +31,8 @@ function save_data($file, $data)
 }
 
 
-//SJEKKING AV BRUKER
 
+//SJEKKING AV BRUKER
 //Sjekker om bruker er innlogget
 function is_logged_in()
 {
@@ -46,8 +47,9 @@ function is_admin()
     return isset($_SESSION["user_id"]) && $_SESSION["is_admin"];
 }
 
-//ALT AV ROMBOOKING
 
+
+//ALT AV ROMBOOKING
 //validering for dato i booking. Returner false hvis du ikke oppfyller krav
 function validate_dates($check_in, $check_out)
 {
@@ -70,6 +72,7 @@ function validate_dates($check_in, $check_out)
 
     return true;
 }
+
 
 
 // Logikk for å finne ledige rom
@@ -114,6 +117,7 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
 }
 
 
+
 function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
 {
     //laster inn eksisterende bookinger
@@ -137,8 +141,9 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
 }
 
 
-//ADMINFUNKSJONALITET
 
+//ADMINFUNKSJONALITET
+//funksjon til admin "dashboard". Viser om et rom er booka for idag eller imorgen
 function is_room_available($room_id, $start_date, $end_date)
 {
     $bookings = load_data("booking");
@@ -162,6 +167,7 @@ function is_room_available($room_id, $start_date, $end_date)
 }
 
 
+
 //Oppdatering av beskrivelse
 //Loader data om rom, itererer gjennom til id matcher. Loader data om spesifikt rom. 
 //Oppdaterer variabler med ny info
@@ -181,6 +187,7 @@ function update_room($room_id, $name, $description)
     
     save_data("rooms", $rooms);
 }
+
 
 
 //loader data fra unavailable_periods, lager ny array med room_id og dato range
@@ -206,6 +213,7 @@ function set_room_unavailable($room_id, $start_date, $end_date)
         return false;
     }
 }
+
 
 
 //laster inn et rom basert på romID

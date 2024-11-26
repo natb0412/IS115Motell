@@ -1,7 +1,7 @@
 <?php 
 //navn, og antall rom
 define("MOTEL_NAME", "Motel California");
-define("number_of_rooms", 25);
+define("NUMBER_OF_ROOMS", 25);
 
 //absolutt path for load og save_data funksjonene
 define("BASE_PATH", dirname(__DIR__));
