@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookings[] = $new_booking;
 
  
-    save_data('bookings', $bookings);
+    save_data('booking', $bookings);
 
 
     header('Location: booking_confirmation.php');
