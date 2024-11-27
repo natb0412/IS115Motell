@@ -9,7 +9,7 @@ $bookings = load_data("booking");
 
 
 //sjekker om det er en post
-if($_SERVER["REQUEST_METHOD"] == "POST")
+if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
     //sjekker om det er update_room, eller set_unavailable som blir posta.
     //basert på dette endrer den parametere som står
