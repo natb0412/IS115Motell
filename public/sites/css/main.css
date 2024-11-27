@@ -1,6 +1,3 @@
-/*
- Tabs
- */
 .tabs {
 	display: flex;
 	flex-wrap: wrap;  /*make sure it wraps*/
@@ -23,15 +20,17 @@
 	display: none;
 }
 .tabs input[type="radio"]:checked + label {
-	background: #fff;
+	background: #fff; /* Highlight selected tab */
 }
 .tabs input[type="radio"]:checked + label + .tab {
-	display: block;
+	display: block; /* Show selected tab content */
 }
+
+
 
 .vertical_form { /*Used for the form to be vertical */
     display: static;
-    flex-direction: column;
+    flex-direction: column; /* Stack form elements vertically */
     gap: 10px;
 }
 
@@ -41,7 +40,7 @@
 
 .vertical_form input,
 .vertical_form select {
-    width: 100%;
+    width: 100%; /* Full width for inputs and selects */
     padding: 10px;
 }
 
