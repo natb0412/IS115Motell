@@ -122,7 +122,7 @@ function find_available_rooms($start_date, $end_date, $adults, $children)
 function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
 {
     //laster inn eksisterende bookinger
-    $bookings = load_data("bookings");
+    $bookings = load_data("booking");
 
     //lager ny booking
     $new_booking = 
@@ -137,7 +137,7 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     ];
     //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
     $bookings[] = $new_booking;
-    save_data("bookings", $bookings);
+    save_data("booking", $bookings);
     return $new_booking["id"];
 }
 
