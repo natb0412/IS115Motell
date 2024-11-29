@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 
 //DATALAGRING OG SENDING
 
@@ -76,12 +77,12 @@ function validate_dates($check_in, $check_out)
 
 
 // Logikk for å finne ledige rom
-function find_available_rooms($check_in, $check_out, $adults, $children)
+function find_available_rooms($start_date, $end_date, $adults, $children)
 {
     //henter inn data fra rooms.php, og booking.php.
     //Lager array for ledige rom
     $rooms = load_data("rooms");
-    $bookings = load_data("bookings");
+    $bookings = load_data("booking");
     $available_rooms = [];
 
     foreach($rooms as $room)
@@ -121,7 +122,7 @@ function find_available_rooms($check_in, $check_out, $adults, $children)
 function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
 {
     //laster inn eksisterende bookinger
-    $bookings = load_data("bookings");
+    $bookings = load_data("booking");
 
     //lager ny booking
     $new_booking = 
@@ -136,7 +137,7 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     ];
     //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
     $bookings[] = $new_booking;
-    save_data("bookings", $bookings);
+    save_data("booking", $bookings);
     return $new_booking["id"];
 }
 
