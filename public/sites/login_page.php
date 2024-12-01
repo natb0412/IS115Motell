@@ -25,15 +25,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $_SESSION["username"] = $user["username"];
             $_SESSION["is_admin"] = $user["is_admin"] ?? false;
             $user_found = true;
-            header("Location: booking_page.php");
             exit();
           }
 
-          if (!$user_found)
+          
+        }
+
+        if (!$user_found)
             {
               $error_message = "Invalid username or password";
             }
-        }
       }    
 }
 ?>

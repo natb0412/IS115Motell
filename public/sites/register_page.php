@@ -20,15 +20,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // Check if passwords match
         if ($password === $confirm_password) 
         {
-          $hashed_password = password_hash($passord, PASSWORD_DEFAULT);
 
 
-          $new_user = 
+          $new_user =
           [
-            "id" = => uniqid(),
+            "id" => uniqid(),
             "username" => $username,
             "name" => $name,
-            "password" => $hashed_password,
+            "password" => $password,
             "user_type" => $user_type,
             "is_admin" => ($user_type === "admin")
           ];
