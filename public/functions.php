@@ -230,3 +230,28 @@ function get_room_by_id($room_id)
 
         return null;
     }
+
+//sletter en booking, og reindexer arrayen
+    function delete_booking($booking_id, $room_id = null)
+    {
+        $booking = load_data("booking");
+        $booking_found = false;
+
+        foreach ($booking as $b => $bookings)
+        {
+            if (isset($bookings["id"]) && $room_id !== null && isset($booking_id["room_id"]) && $bookings["room_id"] === $room_id)
+            {
+                unset($booking[$b]);
+                $booking_found = true;
+                break;
+            }
+        }
+
+        if (!$booking_found)
+        {
+            return false; 
+        }
+
+        save_data("booking", array_values($booking));
+        return true;
+    }

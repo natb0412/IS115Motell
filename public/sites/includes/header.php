@@ -9,6 +9,6 @@
     <a href="booking_page.php">Booking</a>
     
     <?php if (is_admin()): ?>
-        <a href="room_admin.php">Admin Functions</a>
+        <a href="<?php echo BASE_PATH .  "private/admin/room_admin.php"; ?>">Admin Functions</a>
     <?php endif; ?>
 </div>
