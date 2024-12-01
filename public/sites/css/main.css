@@ -1,14 +1,17 @@
-.tabs {
+.tabs 
+{
 	display: flex;
 	flex-wrap: wrap;  /*make sure it wraps*/
 }
-.tabs label {
+.tabs label 
+{
 	order: 1; /* Put the labels first*/
 	display: block;
 	padding: 1rem;
 	margin-right: 0.2rem;
 }
-.tabs .tab {
+.tabs .tab 
+{
   order: 99; /* Put the tabs last*/
   flex-grow: 1;
 	width: 100%;
@@ -19,27 +22,54 @@
 .tabs input[type="radio"] {
 	display: none;
 }
-.tabs input[type="radio"]:checked + label {
+.tabs input[type="radio"]:checked + label 
+{
 	background: #fff; /* Highlight selected tab */
 }
-.tabs input[type="radio"]:checked + label + .tab {
+.tabs input[type="radio"]:checked + label + .tab 
+{
 	display: block; /* Show selected tab content */
 }
 
+.header
+{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #d69945;
+  padding: 10px;
+}
+
+.header a 
+{
+  color: #333;
+  text-decoration: none;
+  padding: 10px 15px;
+  margin-left: 5px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.header a:hover 
+{
+  background-color: #bbb;
+}
 
 
-.vertical_form { /*Used for the form to be vertical */
+.vertical_form 
+{ /*Used for the form to be vertical */
     display: static;
     flex-direction: column; /* Stack form elements vertically */
     gap: 10px;
 }
 
-.vertical_form label {
+.vertical_form label 
+{
     margin-bottom: 10px;
 }
 
 .vertical_form input,
-.vertical_form select {
+.vertical_form select 
+{
     width: 100%; /* Full width for inputs and selects */
     padding: 10px;
 }
@@ -47,9 +77,10 @@
 /*
   Generic Styling of the site
 */
-body {
+body 
+{
   background: #666699;
-  min-height: 100vh;
+  min-height: 110vh;
 	box-sizing: border-box;
 	padding-top: 10vh;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 

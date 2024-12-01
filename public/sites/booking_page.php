@@ -34,10 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     <title>Book a Room</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
+<?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 <!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
-  <label for="tabone">Booking</label>
   
   <div class="tab">
     <h2>Booking</h2>

@@ -58,7 +58,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
-  <label for="tabone">Register</label>
   
   <div class="tab">
     <h2>Register</h2>
