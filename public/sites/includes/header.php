@@ -1,14 +1,18 @@
+
+<link rel="stylesheet" href="/IS115Motell/public/sites/css/main.css">
+
 <div class="header">
     <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="logout.php">Logout</a>
+        <a href="/IS115Motell/public/sites/logout.php">Logout</a>
     <?php else: ?>
-        <a href="../index.php">Login</a>
-        <a href="register_page.php">Register</a>
+        <a href="/IS115Motell/public/index.php">Login</a>
+        <a href="/IS115Motell/public/sites/register_page.php">Register</a>
     <?php endif; ?>
     
-    <a href="booking_page.php">Booking</a>
+    <a href="/IS115Motell/public/sites/booking_page.php">Booking</a>
     
     <?php if (is_admin()): ?>
-        <a href="<?php echo BASE_PATH .  "private/admin/room_admin.php"; ?>">Admin Functions</a>
+
+        <a href="/IS115Motell/private/admin/room_admin.php">Admin Functions</a>
     <?php endif; ?>
 </div>

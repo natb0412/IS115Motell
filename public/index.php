@@ -46,13 +46,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 
+<?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
+
 <!--Link to external CSS file-->
 <link rel="stylesheet" href="sites/css/main.css">
 
 <!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
-  <label for="tabone">Log in</label>
 
   <?php if ($error_message): ?>
         <p style="color: red;"><?php echo htmlspecialchars($error_message); ?></p>
