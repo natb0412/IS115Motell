@@ -12,6 +12,7 @@
     <a href="/IS115Motell/public/sites/booking_page.php">Booking</a>
     
     <?php if (is_admin()): ?>
+
         <a href="/IS115Motell/private/admin/room_admin.php">Admin Functions</a>
     <?php endif; ?>
 </div>
