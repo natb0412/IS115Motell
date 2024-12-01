@@ -34,10 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <link rel="stylesheet" href="sites/css/main.css">
 
 <!--Container for tabs-->
+<?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 <div class="tabs">
-  <input type="radio" name="tabs" id="tabone" checked="checked">
-  <label for="tabone">Log in</label>
-  
   <div class="tab">
     <h2>Log in</h2>
     <form method="post" class="vertical_form">
@@ -50,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </form>
        
     <!--Displays message with link to register page-->
-       <p>Don't have an account? <a href="sites/register_page.php">Register here</a></p>   
+       <p>Don't have an account? <a href="register_page.php">Register here</a></p>   
        
   </div>
 </div>

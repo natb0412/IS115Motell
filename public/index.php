@@ -1,9 +1,9 @@
 <?php
 //Includes functions
-require_once "../../public/functions.php";
+require_once "../public/functions.php";
 
 //loads inn user
-$users = load_data("user");
+$users = load_data("users");
 
 //Checks if there is an post
 if($_SERVER["REQUEST_METHOD"] == "POST")

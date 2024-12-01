@@ -6,7 +6,7 @@
         <a href="register_page.php">Register</a>
     <?php endif; ?>
     
-    <a href="booking.php">Booking</a>
+    <a href="booking_page.php">Booking</a>
     
     <?php if (is_admin()): ?>
         <a href="room_admin.php">Admin Functions</a>
