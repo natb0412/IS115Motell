@@ -29,6 +29,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         //setter rom som utilgjengelig i gitt periode(lager en booking)
         set_room_unavailable($room_id, $start_date, $end_date);
     }
+
+    elseif (isset($_POST["delete_booking"]))
+    {
+        $booking_id = $_POST["booking_id"];
+
+        delete_booking($booking_id);
+
+        $booking = load_data("booking");
+    }
 }
 
 
@@ -36,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 foreach ($rooms as &$room)
     {
         $today = date('Y-m-d');
-        $tomorrow = date('Y-m-d', strtotime('+1 day'));
+        $one_year = date('Y-m-d', strtotime('+365 day'));
     //is_room_available er en funksjon
-        $room['is_available'] = is_room_available($room['id'], $today, $tomorrow);
+        $room['is_available'] = is_room_available($room['id'], $today, $one_year);
     }
     unset($room)
 
@@ -96,5 +105,48 @@ foreach ($rooms as &$room)
             </form>
         </div>
     <?php endforeach; ?>
+
+    <h2> Booking Administrasjon </h2>
+
+    <?php if (!empty($booking)): ?>
+        <table>
+    <thead>
+        <tr>
+            <th>Rom ID</th>
+            <th>Gjest navn</th>
+            <th>Fra dato</th>
+            <th>Til dato</th>
+            <th>Voksne</th>
+            <th>Barn</th>
+            <th>Handlinger</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($booking as $bookings): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($bookings['id']); ?></td>
+                <td><?php echo htmlspecialchars($bookings['room_id']); ?></td>
+                <td><?php echo htmlspecialchars($bookings['guest_name']) ?? "NA"?></td>
+                <td><?php echo htmlspecialchars($bookings['start_date']); ?></td>
+                <td><?php echo htmlspecialchars($bookings['end_date']); ?></td>
+                <td><?php echo htmlspecialchars($bookings['adults']) ?? "NA"; ?></td>
+                <td><?php echo htmlspecialchars($bookings['children']) ?? "NA"; ?></td>
+                <td>
+                    <!-- Form for deleting a booking -->
+                    <form method="post" action="room_admin.php">
+                        <!-- Assuming you have an 'id' key in your bookings array -->
+                        <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($booking['id']); ?>">
+                        <button type="submit" name="delete_booking">Slett booking</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php else: ?>
+<p>Ingen bookinger tilgjengelig.</p>
+
+<?php endif; ?>
 </body>
 </html>
