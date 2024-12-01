@@ -13,6 +13,9 @@ return array (
     ),
     'description' => 'dfdfds<sdf',
     'status' => 'available',
+    'guest_name' => 'admin',
+    'adults' => 0,
+    'children' => 0,
   ),
   1 => 
   array (
@@ -67,7 +70,7 @@ return array (
       'adults' => 1,
       'children' => 1,
     ),
-    'description' => 'A cozy room suitable for one adult and one child.',
+    'description' => 'A cozy room suitable for one adult and fone child.',
     'status' => 'available',
   ),
   5 => 
