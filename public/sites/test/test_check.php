@@ -6,20 +6,20 @@ $users = [
 
 session_start();
 
-if (isset($_POST["user"]) && !isset($_SESSION["user"]))
+if (isset($_POST["users"]) && !isset($_SESSION["users"]))
 {
-    if ($users[$_POST["user"]] == $_POST["password"])
+    if ($users[$_POST["users"]] == $_POST["password"])
     {
-        $_SESSION["user"] = $_POST["user"];
+        $_SESSION["users"] = $_POST["users"];
     }
 
-    if (!isset($_SESSION["user"])) 
+    if (!isset($_SESSION["users"])) 
     {
         $failed = true;
     }
 }
 
-if (isset($_SESSION["user"]))
+if (isset($_SESSION["users"]))
 {
     header("Location: test_index.php");
     exit();

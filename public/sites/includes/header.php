@@ -1,6 +1,6 @@
 <div class="header">
     <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="logout.php">Logout</a>
+        <a href="../index.php">Logout</a>
     <?php else: ?>
         <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
