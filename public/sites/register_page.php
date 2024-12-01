@@ -49,6 +49,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 }
 ?>
+
+
 <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 <!--Link to external CSS file-->
 <link rel="stylesheet" href="css/main.css">

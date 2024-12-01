@@ -22,25 +22,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $user_found = false;
         foreach($users as $user)
         {
-          if ($user["username"] === $login_username && password_verify($login_password, $user["password"]))
+          if ($user["username"] === $login_username && $user["password"] === $login_password)
           {
-            $_SESSION["user_id"] = $users["id"];
-            $_SESSION["username"] = $users["username"];
-            $_SESSION["is_admin"] = $users["is_admin"] ?? false;
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["username"] = $user["username"];
+            $_SESSION["is_admin"] = $user["is_admin"] ?? false;
             $user_found = true;
-            header("Location: booking_page.php");
+            header("Location: sites/booking_page.php");
             exit();
           }
 
-          if (!$user_found)
-            {
-              $error_message = "Invalid username or password";
-               // Print session IDs for testing purposes
-               echo "Session ID: " . session_id() . "<br>";
-               echo "User ID: " . $_SESSION["user_id"] . "<br>";
-               echo "Username: " . $_SESSION["username"] . "<br>";
-               echo "Is Admin: " . ($_SESSION["is_admin"] ? 'Yes' : 'No') . "<br>";
-            }
+
+        }
+        if (!$user_found)
+        {
+          $error_message = "Invalid username or password";
+           // Print session IDs for testing purposes
+           echo "User ID: " . $_SESSION["user_id"] . "<br>";
+           echo "Username: " . $_SESSION["username"] . "<br>";
+           echo "Is Admin: " . ($_SESSION["is_admin"] ? 'Yes' : 'No') . "<br>";
         }
       }    
 }
