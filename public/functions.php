@@ -98,7 +98,7 @@ function find_available_rooms($start_date, $end_date, $adults, $children)
                 {
                     if (($start_date >= $booking["start_date"] && $start_date < $booking["end_date"]) ||
                     ($end_date > $booking["start_date"] && $end_date <= $booking["end_date"]) ||
-                    ($start_date <= $booking["start_date"] && $check_out >= $booking["end_date"]))
+                    ($start_date <= $booking["start_date"] && $end_date >= $booking["end_date"]))
                     {
                         $is_available = false;
                         break;
@@ -130,8 +130,8 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
         "id" => "BOOK" . (count($bookings) + 1),
         "room_id" => $room_id,
         "guest_name" => $guest_name,
-        "check_in" => $check_in,
-        "check_out" => $check_out,
+        "start_date" => $check_in,
+        "end_date" => $check_out,
         "adults" => $adults,
         "children" => $children
     ];

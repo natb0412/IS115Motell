@@ -3,7 +3,7 @@
 require_once "../../public/functions.php";
 
 //loads inn user
-$users = load_data("user");
+$users = load_data("users");
 
 //Checks if there is an post
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 }
 ?>
-
+<?php include 'includes/header.php'; ?>
 <!--Link to external CSS file-->
 <link rel="stylesheet" href="css/main.css">
 
