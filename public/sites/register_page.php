@@ -20,7 +20,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // Check if passwords match
         if ($password === $confirm_password) 
         {
-          $_SESSION['user_id'] = $username; // Use username as session identifier
+          $hashed_password = password_hash($passord, PASSWORD_DEFAULT);
+
+
+          $new_user = 
+          [
+            "id" = => uniqid(),
+            "username" => $username,
+            "name" => $name,
+            "password" => $hashed_password,
+            "user_type" => $user_type,
+            "is_admin" => ($user_type === "admin")
+          ];
+
+
+          $users[] = $new_user;
+
+          save_data("users", $users);
+
+          $_SESSION["user_id"] = $username;
+
           header("Location: booking_page.php");
           exit();
         }

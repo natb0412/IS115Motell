@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $_SESSION["username"] = $user["username"];
             $_SESSION["is_admin"] = $user["is_admin"] ?? false;
             $user_found = true;
-            header("Location: ../index.php");
+            header("Location: booking_page.php");
             exit();
           }
 

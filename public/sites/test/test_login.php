@@ -12,7 +12,7 @@ require "test_check.php";
 ?>
 
 <form method="post">
-  <input type="text" name="user" require/>
+  <input type="text" name="users" require/>
   <input type="password" name="password" require/>
   <input type="submit" value="Login"/>
 </form>
