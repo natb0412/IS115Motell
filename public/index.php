@@ -3,6 +3,10 @@ require_once "../public/functions.php";
 
 //loads inn user
 $users = load_data("users");
+
+echo '<pre>';
+print_r($users);
+echo '</pre>';
 $error_message = null;
 
 //Checks if there is an post
@@ -20,9 +24,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
           if ($user["username"] === $login_username && password_verify($login_password, $user["password"]))
           {
-            $_SESSION["user_id"] = $user["id"];
-            $_SESSION["username"] = $user["username"];
-            $_SESSION["is_admin"] = $user["is_admin"] ?? false;
+            $_SESSION["user_id"] = $users["id"];
+            $_SESSION["username"] = $users["username"];
+            $_SESSION["is_admin"] = $users["is_admin"] ?? false;
             $user_found = true;
             header("Location: booking_page.php");
             exit();
@@ -31,6 +35,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           if (!$user_found)
             {
               $error_message = "Invalid username or password";
+               // Print session IDs for testing purposes
+               echo "Session ID: " . session_id() . "<br>";
+               echo "User ID: " . $_SESSION["user_id"] . "<br>";
+               echo "Username: " . $_SESSION["username"] . "<br>";
+               echo "Is Admin: " . ($_SESSION["is_admin"] ? 'Yes' : 'No') . "<br>";
             }
         }
       }    
