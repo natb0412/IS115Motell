@@ -1,9 +1,9 @@
 <?php
-//Includes functions
-require_once "../../public/functions.php";
+require_once "../public/functions.php";
 
 //loads inn user
-$users = load_data("user");
+$users = load_data("users");
+$error_message = null;
 
 //Checks if there is an post
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -15,18 +15,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $login_password = $_POST["login_password"];
         
         //Check if username and passwords match
-        if ($username === $login_username && $password === $login_password) 
+        $user_found = false;
+        foreach($users as $user)
         {
-          $_SESSION['user_id'] = $username; //username as session identifier
-          header("dashboard.php");
-          exit();
+          if ($user["username"] === $login_username && password_verify($login_password, $user["password"]))
+          {
+            $_SESSION["user_id"] = $user["id"];
+            $_SESSION["username"] = $user["username"];
+            $_SESSION["is_admin"] = $user["is_admin"] ?? false;
+            $user_found = true;
+            header("Location: booking_page.php");
+            exit();
+          }
+
+          if (!$user_found)
+            {
+              $error_message = "Invalid username or password";
+            }
         }
-        else 
-        {
-          $error_message = "Invalid username or password";
-          echo $error_message;
-        }
-}
+      }    
 }
 ?>
 
@@ -37,6 +44,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
   <label for="tabone">Log in</label>
+
+  <?php if ($error_message): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($error_message); ?></p>
+  <?php endif; ?>
   
   <div class="tab">
     <h2>Log in</h2>

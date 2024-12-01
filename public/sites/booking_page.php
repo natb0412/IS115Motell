@@ -6,10 +6,11 @@ require_once "../../public/functions.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
   {
+    load_data("booking");
     if (isset($_POST["check_dates"]))
       {
-        $check_in = $_POST["check_in"];
-        $check_out = $_POST["check_out"];
+        $check_in = $_POST["start_date"];
+        $check_out = $_POST["end_date"];
         $adults = $_POST["adults"];
         $children = $_POST["children"];
 
@@ -44,11 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     
     <!--Input for check-in date -->    
     <label for="check_in">Check-in Dato:</label>
-        <input type="date" id="check_in" name="check_in" required>
+        <input type="date" id="start_date" name="start_date" required>
         
         <!--Input for check-out date-->
         <label for="check_out">Check-out Dato:</label>
-        <input type="date" id="check_out" name="check_out" required>
+        <input type="date" id="end_date" name="end_date" required>
 
         </select>
       <!--Input for number of adult guests-->
@@ -84,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             <?php echo $room["capacity"]["children"]; ?> children </p>
               <form method="post" action="">
                   <input type="hidden" name="room_id" value=" <?php echo $room["id"]; ?>">
-                  <input type="hidden" name="check_in" value="<?php echo htmlspecialchars($check_in); ?>">
-                  <input type="hidden" name="check_out" value="<?php echo htmlspecialchars($check_out); ?>">
+                  <input type="hidden" name="start_date" value="<?php echo htmlspecialchars($check_in); ?>">
+                  <input type="hidden" name="end_date" value="<?php echo htmlspecialchars($check_out); ?>">
                   <input type="hidden" name="adults" value="<?php echo htmlspecialchars($adults); ?>">
                   <input type="hidden" name="children" value="<?php echo htmlspecialchars($children); ?>">
                   <input type="submit" name="book_room" value="Book Now">
@@ -100,8 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["book_room"]))
         {
           $room_id = $_POST['room_id'];
-          $check_in = $_POST['check_in'];
-          $check_out = $_POST['check_out'];
+          $check_in = $_POST['start_date'];
+          $check_out = $_POST['end_date'];
           $adults = $_POST['adults'];
           $children = $_POST['children'];
           ?>
@@ -109,8 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
           <h3> Complete your booking </h3>
           <form method="post" action="process_booking.php" class="vertical_form">
                     <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room_id); ?>">
-                    <input type="date" name="check_in" value="<?php echo htmlspecialchars($check_in); ?>" readonly>
-                    <input type="date" name="check_out" value="<?php echo htmlspecialchars($check_out); ?>" readonly>
+                    <input type="date" name="start_date" value="<?php echo htmlspecialchars($check_in); ?>" readonly>
+                    <input type="date" name="end_date" value="<?php echo htmlspecialchars($check_out); ?>" readonly>
                     <input type="hidden" name="adults" value="<?php echo htmlspecialchars($adults); ?>">
                     <input type="hidden" name="children" value="<?php echo htmlspecialchars($children); ?>">
                     
