@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <input type="text" name="login_username" placeholder="Username" required>
     <input type="password" name="login_password" placeholder="Password" required>
             
-    <button type="submit" name="login" value="Login"></button>
+    <button type="submit" name="login" value="Login">Log in</button>
     </form>
        
     <!--Displays message with link to register page-->
