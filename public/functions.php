@@ -239,7 +239,7 @@ function get_room_by_id($room_id)
 
         foreach ($booking as $b => $bookings)
         {
-            if (isset($bookings["id"]) && $room_id !== null && isset($booking_id["room_id"]) && $bookings["room_id"] === $room_id)
+            if (isset($bookings["id"]) && $bookings["id"] === $booking_id)
             {
                 unset($booking[$b]);
                 $booking_found = true;
