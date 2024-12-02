@@ -48,6 +48,23 @@ function is_admin()
     return isset($_SESSION["user_id"]) && $_SESSION["is_admin"] ?? false;
 }
 
+function require_login()
+{
+    if (!is_logged_in())
+    {
+        header("Location: ../../public/index.php");
+        exit();
+    }
+}
+
+function require_admin()
+{
+    if (!is_admin())
+    {
+        header("Loaction: ../../public/index.php");
+    }
+}
+
 
 
 //ALT AV ROMBOOKING

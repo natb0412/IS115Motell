@@ -2,6 +2,8 @@
 //inkluderer config og functions
 require_once "../../public/config.php";
 require_once "../../public/functions.php";
+require_login();
+require_admin();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
