@@ -82,6 +82,7 @@ foreach ($rooms as &$room)
     <title>Admin - <?php echo MOTEL_NAME; ?></title>
     <link rel="stylesheet" href="css/main.css">
     <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
+
 </head>
 <body>
     <h1>Administrasion - <?php echo MOTEL_NAME; ?></h1>
@@ -92,7 +93,7 @@ foreach ($rooms as &$room)
         <div class="room-info">
             <h3>Room <?php echo htmlspecialchars($room['name']); ?></h3>
             <p>Room type: <?php echo htmlspecialchars($room['type']); ?></p>
-            <p>Status: <?php echo $room['is_available'] ? 'Tilgjengelig' : 'Ikke tilgjengelig'; ?></p>
+            <p>Status: <?php echo $room['is_available'] ? 'Available' : 'Not available'; ?></p>
             
             <div class="room-description">
                 <h4>Description:</h4>
