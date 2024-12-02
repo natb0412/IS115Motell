@@ -5,6 +5,7 @@ require_login();
 if ($_SERVER["REQUEST_METHOD"] === "POST")
   {
     load_data("booking");
+    //sjekker om bruker sjekker tilgjengelige datoer
     if (isset($_POST["check_dates"]))
       {
         $check_in = $_POST["start_date"];
@@ -12,11 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $adults = $_POST["adults"];
         $children = $_POST["children"];
 
+        //finner tilgjengelige rom basert på kriteriene
         $available_rooms = find_available_rooms($check_in, $check_out, $adults, $children);
-      }
-      elseif (isset($_POST['book_room']))
-      {
-
       }
   }
 
@@ -71,11 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
 
     <?php
+    // Sjekk om det er tilgjengelige rom, og vis dem
     if (isset($available_rooms) && !empty($available_rooms)):
     ?>
 
       <h3> Available rooms: </h3>
       <?php
+      //loop gjennom alle tilgjengelige rom og vis detaljer
         foreach ($available_rooms as $room): 
       ?>
           <div class="room">
@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             <p>Type: <?php echo htmlspecialchars($room["type"]); ?> </p>
             <p>Capacity: <?php echo $room["capacity"]["adults"]; ?> adults,
             <?php echo $room["capacity"]["children"]; ?> children </p>
+              <!-- Form for å booke valgt rom -->
               <form method="post" action="">
                   <input type="hidden" name="room_id" value=" <?php echo $room["id"]; ?>">
                   <input type="hidden" name="start_date" value="<?php echo htmlspecialchars($check_in); ?>">
@@ -98,8 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         <?php endif; ?>
 
         <?php
+        //sjekker om brukeren har sendt en booking request
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["book_room"]))
         {
+          //hent booking detaljer fra formen
           $room_id = $_POST['room_id'];
           $check_in = $_POST['start_date'];
           $check_out = $_POST['end_date'];

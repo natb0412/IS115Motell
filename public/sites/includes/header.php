@@ -1,6 +1,6 @@
 
 <link rel="stylesheet" href="/IS115Motell/public/sites/css/main.css">
-
+<!-- enkel header som linker til forskjellige sider, og baserer seg på sessionID -->
 <div class="header">
     <?php if (isset($_SESSION['user_id'])): ?>
         <a href="/IS115Motell/public/sites/logout.php">Logout</a>

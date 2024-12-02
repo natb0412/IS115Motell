@@ -4,9 +4,6 @@ require_once "../../public/config.php";
 require_once "../../public/functions.php";
 require_login();
 require_admin();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
 //laster inn rom, og bookingstatus
 $rooms = load_data("rooms");
@@ -16,7 +13,7 @@ $booking = load_data("booking");
 //sjekker om det er en post
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    //sjekker om det er update_room, eller set_unavailable som blir posta.
+    //sjekker om det er update_room, set_unavailable, eller delete_booking som blir posta.
     //basert på dette endrer den parametere som står
     if(isset($_POST["update_room"]))
     {
@@ -90,7 +87,7 @@ foreach ($rooms as &$room)
     <h1>Administrasion - <?php echo MOTEL_NAME; ?></h1>
 
     <h2>Room administrasion</h2>
-
+    <!-- Overordna loop for fremvisning av rom -->
     <?php foreach ($rooms as $room): ?>
         <div class="room-info">
             <h3>Room <?php echo htmlspecialchars($room['name']); ?></h3>
@@ -102,7 +99,7 @@ foreach ($rooms as &$room)
                 <p><?php echo htmlspecialchars($room["description"]); ?></p>
             </div>
 
-            <!-- Update Room Form -->
+            <!-- Oppdater rom -->
             <form method="post">
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
                 <label>Name:
@@ -114,7 +111,7 @@ foreach ($rooms as &$room)
                 <button type="submit" name="update_room">Update room</button>
             </form>
 
-            <!-- Set Room Unavailable Form -->
+            <!-- Sett rom utilgjengelig -->
             <form method="post">
                 <h4>Set room unavailable</h4>
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
@@ -127,9 +124,9 @@ foreach ($rooms as &$room)
                 <button type="submit" name="set_unavailable">Set unavailable</button>
             </form>
 
-            <!-- Display Bookings for the Room -->
+            <!-- Vis bookinger for rommet -->
             <?php 
-            // Filter bookings for the current room
+            // Filtrer bookinger for rommet
             $current_bookings = array_filter($booking, function($b) use ($room)
             {
                 return $b['room_id'] == $room['id'];
@@ -169,7 +166,7 @@ foreach ($rooms as &$room)
                 </table>
 
             <?php else: ?>
-                <p>Ingen bookinger for dette rommet.</p>
+                <p>No bookings for this room.</p>
             <?php endif; ?>
         </div>
 
