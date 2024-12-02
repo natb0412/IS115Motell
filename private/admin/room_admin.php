@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $end_date = $_POST["end_date"];
         //setter rom som utilgjengelig i gitt periode(lager en booking)
         set_room_unavailable($room_id, $start_date, $end_date);
-        $rooms = load_data("rooms");
+        $rooms = load_data("booking");
     }
 
     elseif (isset($_POST["delete_booking"]))
@@ -139,7 +139,7 @@ foreach ($rooms as &$room)
                                 <td><?php echo htmlspecialchars($book['children']); ?></td>
                                 <td>
                                     <form method="post">
-                                        <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($book['id']); ?>">
+                                        <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($book['id']) ?? 666; ?>">
                                         <button type="submit" name="delete_booking">Slett booking</button>
                                     </form>
                                 </td>

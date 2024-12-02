@@ -178,9 +178,6 @@ function update_room($room_id, $name, $description)
     {
         if($room["id"] == $room_id)
         {
-            $room["guest_name"] = "admin";
-            $room["adults"] = 0;
-            $room["children"] = 0;
             $room["name"] = $name;
             $room["description"] = $description;
             $description = $room["description"];
@@ -203,6 +200,9 @@ function set_room_unavailable($room_id, $start_date, $end_date)
     {
         $unavailable_periods[] = 
         [
+            "adults" => 0,
+            "children" => 0,
+            "guest_name" => "admin",
             "room_id" => $room_id,
             "start_date" => $start_date,
             "end_date" => $end_date
