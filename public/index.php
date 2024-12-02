@@ -4,10 +4,6 @@ require_once "../public/functions.php";
 //Laster inn bruker
 $users = load_data("users");
 
-echo '<pre>';
-print_r($users);
-echo '</pre>';
-$error_message = null;
 
 //Sjekker om det er et post
 if($_SERVER["REQUEST_METHOD"] == "POST")
