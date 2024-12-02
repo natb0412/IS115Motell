@@ -113,8 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                     <input type="hidden" name="adults" value="<?php echo htmlspecialchars($adults); ?>">
                     <input type="hidden" name="children" value="<?php echo htmlspecialchars($children); ?>">
                     
-                    <label for="guest_name">Guest Name:</label>
-                    <input type="text" id="guest_name" name="guest_name" required>
+                    <input type="hidden" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
 
                     <input type="submit" value="Confirm Booking">
 
