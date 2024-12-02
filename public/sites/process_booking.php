@@ -13,6 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookings = load_data('booking');
 
 
+    $user =
+    [
+        "id" => $_SESSION["user_id"],
+        "name" => $_SESSION["username"]
+    ];
+
     $new_booking = 
     [
         'id' => uniqid(),
@@ -24,17 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'children' => $children
     ];
 
-    $user =
-    [
-        "id" => $_SESSION["user_id"],
-        "name" => $_SESSION["name"]
-    ];
-
-    $booking_id = add_booking($room_id, $user, $check_in, $check_out, $adults, $children);
 
 
 
-   // $bookings[] = $new_booking; 
+   $bookings[] = $new_booking; 
 
  
     save_data('booking', $bookings);
