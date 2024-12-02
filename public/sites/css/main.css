@@ -1,18 +1,18 @@
 .tabs 
 {
 	display: flex;
-	flex-wrap: wrap;  /*make sure it wraps*/
+	flex-wrap: wrap;  /*sørger for at den wraps*/
 }
 .tabs label 
 {
-	order: 1; /* Put the labels first*/
+	order: 1; /* putter labels først*/
 	display: block;
 	padding: 1rem;
 	margin-right: 0.2rem;
 }
 .tabs .tab 
 {
-  order: 99; /* Put the tabs last*/
+  order: 99; /* putter tabs sist*/
   flex-grow: 1;
 	width: 100%;
 	display: flex;
@@ -24,14 +24,14 @@
 }
 .tabs input[type="radio"]:checked + label 
 {
-	background: #fff; /* Highlight selected tab */
+	background: #fff; /* Uthev valgt tab */
 }
 .tabs input[type="radio"]:checked + label + .tab 
 {
-	display: block; /* Show selected tab content */
+	display: block; /* Vis valgt tab innhold */
 }
 
-.header
+.header 
 {
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +42,7 @@
 .header a 
 {
   color: #333;
-  text-decoration: none;
+  text-decoration: none; /*Fjerner understrek fra lenker */
   padding: 10px 15px;
   margin-left: 5px;
   background-color: #ddd;
@@ -51,14 +51,14 @@
 
 .header a:hover 
 {
-  background-color: #bbb;
+  background-color: #bbb; /*Endrer bakgrunnsfarge når musen er over */
 }
 
 
 .vertical_form 
-{ /*Used for the form to be vertical */
+{ /*Brukes for at skjemaet skal være vertikalt */
     display: static;
-    flex-direction: column; /* Stack form elements vertically */
+    flex-direction: column; /* Stable form elementet vertikalt */
     gap: 10px;
 }
 
@@ -70,12 +70,12 @@
 .vertical_form input,
 .vertical_form select 
 {
-    width: 100%; /* Full width for inputs and selects */
+    width: 100%; /* Full bredde for input og select */
     padding: 10px;
 }
 
 /*
-  Generic Styling of the site
+ Generisk styling av nettstedet
 */
 body 
 {
