@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $room_id = $_POST["room_id"];
         $start_date = $_POST["start_date"];
         $end_date = $_POST["end_date"];
-        $guest_name = "Admin made unavailable";
+        $guest_name = $_SESSION["username"];
         $adults = 0;
         $children = 0;
 
