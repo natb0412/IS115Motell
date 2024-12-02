@@ -24,6 +24,7 @@ $rooms = load_data('rooms');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Bookings</title>
     <link rel="stylesheet" href="css/main.css">
+    <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 </head>
 <body>
     <h1>Your Bookings</h1>

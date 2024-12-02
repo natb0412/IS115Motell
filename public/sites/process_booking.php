@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Booking Confirmed</title>
         <link rel="stylesheet" href="css/main.css">
+        <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
     </head>
     <body>
         <h1>Booking Confirmed</h1>
