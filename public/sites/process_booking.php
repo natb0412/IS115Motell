@@ -24,8 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'children' => $children
     ];
 
+    $user =
+    [
+        "id" => $_SESSION["user_id"],
+        "name" => $_SESSION["name"]
+    ];
 
-    $bookings[] = $new_booking;
+    $booking_id = add_booking($room_id, $user, $check_in, $check_out, $adults, $children);
+
+
+
+   // $bookings[] = $new_booking; 
 
  
     save_data('booking', $bookings);

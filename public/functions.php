@@ -136,7 +136,7 @@ function find_available_rooms($start_date, $end_date, $adults, $children)
 
 
 
-function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
+function add_booking($room_id, $user, $check_in, $check_out, $adults, $children)
 {
     //laster inn eksisterende bookinger
     $bookings = load_data("booking");
@@ -144,9 +144,10 @@ function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $chi
     //lager ny booking
     $new_booking = 
     [
-        "id" => "BOOK" . (count($bookings) + 1),
+        "id" => uniqid(),
+        "user_id" => $user["id"],
         "room_id" => $room_id,
-        "guest_name" => $guest_name,
+        "guest_name" => $user["name"],
         "start_date" => $check_in,
         "end_date" => $check_out,
         "adults" => $adults,

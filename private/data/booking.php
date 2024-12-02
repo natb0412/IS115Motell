@@ -32,17 +32,6 @@ return array (
   ),
   3 => 
   array (
-    'id' => '674d233a0fe0f',
-    'room_id' => ' 3',
-    'guest_name' => 'a',
-    'start_date' => '2024-12-02',
-    'end_date' => '2024-12-03',
-    'adults' => '1',
-    'children' => '1',
-    'user_id' => NULL,
-  ),
-  4 => 
-  array (
     'id' => '674d247ca6cb4',
     'room_id' => ' 4',
     'guest_name' => 'natb',
