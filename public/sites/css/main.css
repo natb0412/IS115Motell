@@ -18,6 +18,7 @@
 	display: flex;
   padding: 1rem;
   background: #fff;
+  flex-direction: column; /* Stable form elementet vertikalt */
 }
 .tabs input[type="radio"] {
 	display: none;
@@ -67,12 +68,26 @@
     margin-bottom: 10px;
 }
 
+.vertical_form table
+{
+  order: 99; /* putter tabs sist*/
+  flex-grow: 1;
+	width: 100%;
+	display: flex;
+  padding: 1rem;
+  background: #fff;
+  flex-direction: column;
+}
 .vertical_form input,
 .vertical_form select 
 {
     width: 100%; /* Full bredde for input og select */
     padding: 10px;
 }
+
+
+
+
 
 /*
  Generisk styling av nettstedet

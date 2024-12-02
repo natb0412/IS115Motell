@@ -27,6 +27,7 @@ $rooms = load_data('rooms');
     <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 </head>
 <body>
+<div class="vertical_form">
     <h1>Your Bookings</h1>
 
     <?php if (empty($user_bookings)): ?>
@@ -69,5 +70,6 @@ $rooms = load_data('rooms');
     <?php endif; ?>
 
     <a href="booking_page.php">Make a New Booking</a>
+    </div>
 </body>
 </html>
