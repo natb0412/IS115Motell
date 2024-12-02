@@ -45,7 +45,7 @@ function is_logged_in()
 //sjekker om bruker er admin
 function is_admin()
 {
-    return isset($_SESSION["user_id"]) && $_SESSION["is_admin"] ?? false;
+    return isset($_SESSION["user_id"]) && isset($_SESSION["is_admin"]) && $_SESSION["is_admin"];
 }
 
 function require_login()

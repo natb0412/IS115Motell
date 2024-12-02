@@ -37,7 +37,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
           save_data("users", $users);
 
-          $_SESSION["user_id"] = $username;
+          $_SESSION["username"] = $username;
+          $_SESSION["is_admin"] = $new_user["is_admin"];
 
           header("Location: booking_page.php");
           exit();

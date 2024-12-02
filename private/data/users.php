@@ -36,4 +36,49 @@ return array (
     'user_type' => 'admin',
     'is_admin' => true,
   ),
+  4 => 
+  array (
+    'id' => '674dd572d8923',
+    'username' => 'dd',
+    'name' => 'dd',
+    'password' => 'dd',
+    'user_type' => 'admin',
+    'is_admin' => true,
+  ),
+  5 => 
+  array (
+    'id' => '674dd7deb8fbb',
+    'username' => 'aa',
+    'name' => 'aa',
+    'password' => 'aa',
+    'user_type' => 'admin',
+    'is_admin' => true,
+  ),
+  6 => 
+  array (
+    'id' => '674dd7eddbcc5',
+    'username' => 'ff',
+    'name' => 'ff',
+    'password' => 'ff',
+    'user_type' => 'guest',
+    'is_admin' => false,
+  ),
+  7 => 
+  array (
+    'id' => '674dd8a820923',
+    'username' => 'c',
+    'name' => 'c',
+    'password' => 'c',
+    'user_type' => 'guest',
+    'is_admin' => false,
+  ),
+  8 => 
+  array (
+    'id' => '674dd8c9526ee',
+    'username' => 'v',
+    'name' => 'v',
+    'password' => 'v',
+    'user_type' => 'admin',
+    'is_admin' => true,
+  ),
 );
