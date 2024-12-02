@@ -87,65 +87,66 @@ foreach ($rooms as &$room)
     <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 </head>
 <body>
-    <h1>Administrasjon - <?php echo MOTEL_NAME; ?></h1>
+    <h1>Administrasion - <?php echo MOTEL_NAME; ?></h1>
 
-    <h2>Rom administrasjon</h2>
+    <h2>Room administrasion</h2>
 
     <?php foreach ($rooms as $room): ?>
         <div class="room-info">
-            <h3>Rom <?php echo htmlspecialchars($room['name']); ?></h3>
-            <p>Romtype: <?php echo htmlspecialchars($room['type']); ?></p>
+            <h3>Room <?php echo htmlspecialchars($room['name']); ?></h3>
+            <p>Room type: <?php echo htmlspecialchars($room['type']); ?></p>
             <p>Status: <?php echo $room['is_available'] ? 'Tilgjengelig' : 'Ikke tilgjengelig'; ?></p>
             
             <div class="room-description">
-                <h4>Rombeskrivelse:</h4>
+                <h4>Description:</h4>
                 <p><?php echo htmlspecialchars($room["description"]); ?></p>
             </div>
 
             <!-- Update Room Form -->
             <form method="post">
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
-                <label>Navn:
+                <label>Name:
                     <input type="text" name="name" value="<?php echo htmlspecialchars($room['name']); ?>" required>
                 </label>
-                <label>Beskrivelse:
+                <label>Description:
                     <textarea name="description" required><?php echo htmlspecialchars($room['description']); ?></textarea>
                 </label>
-                <button type="submit" name="update_room">Oppdater rom</button>
+                <button type="submit" name="update_room">Update room</button>
             </form>
 
             <!-- Set Room Unavailable Form -->
             <form method="post">
-                <h4>Sett rom utilgjengelig</h4>
+                <h4>Set room unavailable</h4>
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
-                <label>Fra dato:
+                <label>From date:
                     <input type="date" name="start_date" required>
                 </label>
-                <label>Til dato:
+                <label>To date:
                     <input type="date" name="end_date" required>
                 </label>
-                <button type="submit" name="set_unavailable">Sett utilgjengelig</button>
+                <button type="submit" name="set_unavailable">Set unavailable</button>
             </form>
 
             <!-- Display Bookings for the Room -->
             <?php 
             // Filter bookings for the current room
-            $current_bookings = array_filter($booking, function($b) use ($room) {
+            $current_bookings = array_filter($booking, function($b) use ($room)
+            {
                 return $b['room_id'] == $room['id'];
             });
             ?>
 
             <?php if (!empty($current_bookings)): ?>
-                <h4>Aktuelle Bookinger:</h4>
+                <h4>Bookings:</h4>
                 <table>
                     <thead>
                         <tr>
-                            <th>Gjest navn</th>
-                            <th>Fra dato</th>
-                            <th>Til dato</th>
-                            <th>Voksne</th>
-                            <th>Barn</th>
-                            <th>Handlinger</th>
+                            <th>Name</th>
+                            <th>From date</th>
+                            <th>To date</th>
+                            <th>Adults</th>
+                            <th>Children</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -159,7 +160,7 @@ foreach ($rooms as &$room)
                                 <td>
                                     <form method="post">
                                         <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($book['id']) ?? 666; ?>">
-                                        <button type="submit" name="delete_booking">Slett booking</button>
+                                        <button type="submit" name="delete_booking">Delete booking</button>
                                     </form>
                                 </td>
                             </tr>

@@ -40,4 +40,24 @@ return array (
     'adults' => '1',
     'children' => '1',
   ),
+  4 => 
+  array (
+    'id' => '674d8d0dd5023',
+    'room_id' => ' 3',
+    'guest_name' => 'natb',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-03',
+    'adults' => '1',
+    'children' => '1',
+  ),
+  5 => 
+  array (
+    'id' => '674d929a3d2d2',
+    'room_id' => ' 4',
+    'guest_name' => 'natb',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-04',
+    'adults' => '1',
+    'children' => '1',
+  ),
 );
