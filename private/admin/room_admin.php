@@ -82,7 +82,106 @@ foreach ($rooms as &$room)
     <title>Admin - <?php echo MOTEL_NAME; ?></title>
     <link rel="stylesheet" href="css/main.css">
     <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
+<style>
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
 
+/* Header styles */
+h1, h2 {
+    color: #333;
+}
+
+/* Room container */
+.room-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: space-between; /* Space out the squares */
+}
+
+/* Room info square */
+.room-info {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px; /* Space between squares */
+    padding: 20px;
+    flex: 1 1 calc(30% - 20px); /* Make each square take up about one-third of the container width */
+    box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+/* Room title */
+.room-info h3 {
+    margin-top: 0;
+}
+
+/* Status styling */
+.room-info p {
+    margin: 5px 0;
+}
+
+/* Description section */
+.room-description {
+    margin-top: 10px;
+}
+
+/* Form styling */
+form {
+    margin-top: 15px;
+}
+
+/* Input fields and buttons */
+input[type="text"],
+input[type="date"],
+textarea {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff; /* Header background color */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping for rows */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Highlight on row hover */
+}
+</style>
 </head>
 <body>
     <h1>Administrasion - <?php echo MOTEL_NAME; ?></h1>
