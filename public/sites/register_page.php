@@ -1,27 +1,27 @@
 <?php
-//Includes functions
+//Inkluderer functions
 require_once "../../public/functions.php";
 
-//loads inn user
+//Laster inn user
 $users = load_data("users");
 
-//Checks if there is an post
+//Sjekker om det er en post
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if(isset($_POST["register_user"]))
     {
-      // Retrieve form data for user registration
+      // Henter data fra form for user registrering
         $username = $_POST["username"];
         $name = $_POST["name"];
         $password = $_POST["password"];
         $confirm_password = $_POST["confirm_password"];
         $user_type = $_POST["user_type"];
         
-        // Check if passwords match
+        // Sjekker om passwords matcher
         if ($password === $confirm_password) 
         {
 
-
+          // Oppretter en ny user med unik ID og detaljer
           $new_user =
           [
             "id" => uniqid(),
@@ -32,17 +32,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             "is_admin" => ($user_type === "admin")
           ];
 
-
+          // Legger den nye user til listen over users
           $users[] = $new_user;
-
+          
           save_data("users", $users);
 
           $_SESSION["username"] = $username;
           $_SESSION["is_admin"] = $new_user["is_admin"];
 
+          // Videresender til booking_page etter vellykket registrering
           header("Location: booking_page.php");
           exit();
         }
+        // Viser feilmelding hvis Passwords ikke matcher
       else 
         {
           echo "Passwords do not match. Please try again.";
@@ -53,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 
 <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
-<!--Link to external CSS file-->
+<!--Link til ekstern CSS file-->
 <link rel="stylesheet" href="css/main.css">
 
 <!--Container for tabs-->
@@ -72,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <input type="password" name="password" placeholder="Password" required>
     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
            
-    <!--Dropdown menu for selecting user type-->
+    <!--Dropdown meny for valg av bruker type-->
             <select id="user_type" name="user_type" required>
             <option value="guest">Guest User</option>
             <option value="admin">Admin User</option>
@@ -80,7 +82,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
             <button type="submit" name="register_user">Register</button>
         </form>
-         <!--Displays message with link to login page-->
+         <!--Melding med lenke til påloggingssiden-->
             <p>Already have an account? <a href="../index.php">Login here</a></p>   
     
   </div>

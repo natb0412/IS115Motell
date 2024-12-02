@@ -1,21 +1,21 @@
 <?php
-//Includes functions
+//Inkluder functions
 require_once "../../public/functions.php";
 session_start();
 
-//loads inn user
+//Laster inn user
 $users = load_data("users");
 
-//Checks if there is an post
+//Sjekker om tdet er en post
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     if(isset($_POST["login"]))
     {
-      //Retrieve form data for login
+      //Får form data for login
         $login_username = $_POST["login_username"];
         $login_password = $_POST["login_password"];
         
-        //Check if username and passwords match
+        //Sjekker om username og passwords matcher
         $user_found = false;
         foreach($users as $user)
         {
@@ -39,7 +39,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 }
 ?>
 
-<!--Link to external CSS file-->
+<!--Link til ekstern CSS file-->
 <link rel="stylesheet" href="sites/css/main.css">
 
 <!--Container for tabs-->
@@ -49,14 +49,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <h2>Log in</h2>
     <form method="post" class="vertical_form">
     
-    <!--Input for username and pasword-->
+    <!--Input for username og pasword-->
     <input type="text" name="login_username" placeholder="Username" required>
     <input type="password" name="login_password" placeholder="Password" required>
             
     <button type="submit" name="login" value="Login"></button>
     </form>
        
-    <!--Displays message with link to register page-->
+    <!--Melding med lenke til register page-->
        <p>Don't have an account? <a href="register_page.php">Register here</a></p>   
        
   </div>
