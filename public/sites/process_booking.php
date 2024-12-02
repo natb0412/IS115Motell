@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $check_out = $_POST['end_date'];
     $adults = $_POST['adults'];
     $children = $_POST['children'];
-    $guest_name = $_POST['guest_name'];
+    $guest_name = $_SESSION['username'];
 
 
     $bookings = load_data('booking');

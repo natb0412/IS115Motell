@@ -30,4 +30,15 @@ return array (
     'adults' => '1',
     'children' => '1',
   ),
+  3 => 
+  array (
+    'id' => '674d233a0fe0f',
+    'room_id' => ' 3',
+    'guest_name' => 'a',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-03',
+    'adults' => '1',
+    'children' => '1',
+    'user_id' => NULL,
+  ),
 );

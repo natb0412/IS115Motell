@@ -1,8 +1,6 @@
 <?php
-
-
-
 require_once "../../public/functions.php";
+require_login();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
   {
@@ -62,8 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         <input type="number" id="children" name="children" min="0" max="3" required>
 
        <!--Input for guest_name-->
-       <label for="guest_name">Guests Name:</label>
-        <input type="name" id="guest_name" name="guest_name"  required>
+       <input type="hidden" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
 
         <!--Submit button to send form data-->
         <input type="submit" name="check_dates" value="Check available rooms">
