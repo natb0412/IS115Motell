@@ -42,11 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     <form method="post" class="vertical_form">
     
     <!--Input for check-in date -->    
-    <label for="check_in">Check-in Dato:</label>
+    <label for="check_in">Check-in Date:</label>
         <input type="date" id="start_date" name="start_date" required>
         
         <!--Input for check-out date-->
-        <label for="check_out">Check-out Dato:</label>
+        <label for="check_out">Check-out Date:</label>
         <input type="date" id="end_date" name="end_date" required>
 
         </select>

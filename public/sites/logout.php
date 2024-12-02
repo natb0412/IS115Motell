@@ -1,5 +1,5 @@
 <?php
-
+//starter session, tømmer arrayen, og ødelegger session
 session_start();
 
 
