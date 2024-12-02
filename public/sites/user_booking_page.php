@@ -40,7 +40,6 @@ $rooms = load_data('rooms');
                     <th>Check-out Date</th>
                     <th>Adults</th>
                     <th>Children</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,10 +61,6 @@ $rooms = load_data('rooms');
                         <td><?php echo htmlspecialchars($booking['end_date']); ?></td>
                         <td><?php echo htmlspecialchars($booking['adults']); ?></td>
                         <td><?php echo htmlspecialchars($booking['children']); ?></td>
-                        <td>
-                            <!-- Add actions like view details, cancel booking, etc. -->
-                            <a href="view_booking.php?id=<?php echo $booking['id']; ?>">View Details</a>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
