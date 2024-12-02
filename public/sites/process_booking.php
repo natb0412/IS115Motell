@@ -1,6 +1,7 @@
 <?php
 require_once '../functions.php';
 
+//sjekker POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $room_id = $_POST['room_id'];
     $check_in = $_POST['start_date'];
@@ -9,11 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $children = $_POST['children'];
     $guest_name = $_SESSION['username'];
 
-
+//loader eksisterende bookinger
     $bookings = load_data('booking');
 
 
-
+//lag ny booking
     $new_booking = 
     [
         'id' => uniqid(),
@@ -27,14 +28,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-
+//legger til den nye bookingen i listen over bookinger
    $bookings[] = $new_booking; 
 
- 
+ //lagrer den nye bookingen i booking arrayen
     save_data('booking', $bookings);
 
+//loader inn rooms
     $rooms = load_data("rooms");
     $room = null;
+//loop gjennom rom for å finne det booka rommet
     foreach($rooms as $r)
     {
         if ($r["id"] == $room_id)
