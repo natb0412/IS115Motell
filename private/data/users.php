@@ -81,4 +81,13 @@ return array (
     'user_type' => 'admin',
     'is_admin' => true,
   ),
+  9 => 
+  array (
+    'id' => '674dd98fe9e55',
+    'username' => 'k',
+    'name' => 'k',
+    'password' => 'k',
+    'user_type' => 'admin',
+    'is_admin' => true,
+  ),
 );
