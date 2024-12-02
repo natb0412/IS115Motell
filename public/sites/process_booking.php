@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookings = load_data('booking');
 
 
-    $new_booking = [
+    $new_booking = 
+    [
         'id' => uniqid(),
         'room_id' => $room_id,
         'guest_name' => $guest_name,

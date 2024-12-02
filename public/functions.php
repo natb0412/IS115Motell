@@ -200,6 +200,7 @@ function set_room_unavailable($room_id, $start_date, $end_date)
     {
         $unavailable_periods[] = 
         [
+            "id" => uniqid(),
             "adults" => 0,
             "children" => 0,
             "guest_name" => "admin",

@@ -29,9 +29,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $room_id = $_POST["room_id"];
         $start_date = $_POST["start_date"];
         $end_date = $_POST["end_date"];
-        //setter rom som utilgjengelig i gitt periode(lager en booking)
-        set_room_unavailable($room_id, $start_date, $end_date);
-        $rooms = load_data("booking");
+        $guest_name = "Admin made unavailable";
+        $adults = 0;
+        $children = 0;
+
+        $make_unavailable = 
+        [
+            'id' => uniqid(),
+            'room_id' => $room_id,
+            'guest_name' => $guest_name,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'adults' => $adults,
+            'children' => $children
+        ];
+        $booking = load_data("booking");
+        $booking[] = $make_unavailable;
+
+        save_data("booking", $booking);
     }
 
     elseif (isset($_POST["delete_booking"]))

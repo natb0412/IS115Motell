@@ -11,11 +11,8 @@ return array (
       'adults' => 1,
       'children' => 1,
     ),
-    'description' => 'dfdfds<sdf',
+    'description' => 'Fint rom gutta',
     'status' => 'available',
-    'guest_name' => 'admin',
-    'adults' => 0,
-    'children' => 0,
   ),
   1 => 
   array (
