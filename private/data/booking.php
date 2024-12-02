@@ -60,4 +60,34 @@ return array (
     'adults' => 0,
     'children' => 0,
   ),
+  6 => 
+  array (
+    'id' => '674d4483a8ce1',
+    'room_id' => ' 6',
+    'guest_name' => 'natb',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-03',
+    'adults' => '1',
+    'children' => '1',
+  ),
+  7 => 
+  array (
+    'id' => '674d45c075945',
+    'room_id' => ' 7',
+    'guest_name' => 'natb',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-03',
+    'adults' => '1',
+    'children' => '1',
+  ),
+  8 => 
+  array (
+    'id' => '674d463950c5e',
+    'room_id' => ' 8',
+    'guest_name' => 'natb',
+    'start_date' => '2024-12-02',
+    'end_date' => '2024-12-03',
+    'adults' => '1',
+    'children' => '1',
+  ),
 );

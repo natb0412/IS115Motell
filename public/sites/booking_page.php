@@ -60,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         <input type="number" id="children" name="children" min="0" max="3" required>
 
        <!--Input for guest_name-->
-       <input type="hidden" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
+       <label for="guest_name"> Your name:</label>
+       <input type="text" id="guest_name" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" disabled>
 
         <!--Submit button to send form data-->
         <input type="submit" name="check_dates" value="Check available rooms">

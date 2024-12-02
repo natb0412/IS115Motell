@@ -135,32 +135,6 @@ function find_available_rooms($start_date, $end_date, $adults, $children)
 }
 
 
-
-function add_booking($room_id, $user, $check_in, $check_out, $adults, $children)
-{
-    //laster inn eksisterende bookinger
-    $bookings = load_data("booking");
-
-    //lager ny booking
-    $new_booking = 
-    [
-        "id" => uniqid(),
-        "user_id" => $user["id"],
-        "room_id" => $room_id,
-        "guest_name" => $user["name"],
-        "start_date" => $check_in,
-        "end_date" => $check_out,
-        "adults" => $adults,
-        "children" => $children
-    ];
-    //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
-    $bookings[] = $new_booking;
-    save_data("booking", $bookings);
-    return $new_booking["id"];
-}
-
-
-
 //ADMINFUNKSJONALITET
 //funksjon til admin "dashboard". Viser om et rom er booka for idag eller imorgen
 function is_room_available($room_id, $start_date, $end_date)

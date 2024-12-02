@@ -13,11 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $bookings = load_data('booking');
 
 
-    $user =
-    [
-        "id" => $_SESSION["user_id"],
-        "name" => $_SESSION["username"]
-    ];
 
     $new_booking = 
     [
