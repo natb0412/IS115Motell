@@ -1,19 +1,19 @@
 <?php
 require_once "../../public/functions.php";
-require_login(); // Ensure the user is logged in
+require_login(); // Sikkrer at user er logged in
 
-// Get the current user's ID
+// Henter nåverende user's ID
 $guest_name = $_SESSION['username'];
 
-// Load all bookings
+// Laster inn alle bookings
 $all_bookings = load_data('booking');
 
-// Filter bookings for the current user
+// Filtrerer bookings for nåverende user
 $user_bookings = array_filter($all_bookings, function($booking) use ($guest_name) {
     return $booking['guest_name'] == $guest_name;
 });
 
-// Load room data to get room names
+// Laster inn room data for å få room navn
 $rooms = load_data('rooms');
 ?>
 
@@ -46,7 +46,7 @@ $rooms = load_data('rooms');
             <tbody>
                 <?php foreach ($user_bookings as $booking): ?>
                     <?php
-                    // Find the room name
+                    // Finn room navn
                     $room_name = 'Unknown Room';
                     foreach ($rooms as $room) {
                         if ($room['id'] == $booking['room_id']) {
