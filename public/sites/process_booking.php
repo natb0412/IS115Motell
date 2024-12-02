@@ -7,13 +7,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $check_out = $_POST['end_date'];
     $adults = $_POST['adults'];
     $children = $_POST['children'];
-    $guest_name = $_POST['guest_name'];
+    $guest_name = $_SESSION['username'];
 
 
     $bookings = load_data('booking');
 
 
-    $new_booking = [
+
+    $new_booking = 
+    [
         'id' => uniqid(),
         'room_id' => $room_id,
         'guest_name' => $guest_name,
@@ -24,7 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ];
 
 
-    $bookings[] = $new_booking;
+
+
+   $bookings[] = $new_booking; 
 
  
     save_data('booking', $bookings);
@@ -49,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Booking Confirmed</title>
         <link rel="stylesheet" href="css/main.css">
+        <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
     </head>
     <body>
         <h1>Booking Confirmed</h1>

@@ -1,12 +1,11 @@
 <?php
-
-
-
 require_once "../../public/functions.php";
+require_login();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST")
   {
     load_data("booking");
+    //sjekker om bruker sjekker tilgjengelige datoer
     if (isset($_POST["check_dates"]))
       {
         $check_in = $_POST["start_date"];
@@ -14,11 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         $adults = $_POST["adults"];
         $children = $_POST["children"];
 
+        //finner tilgjengelige rom basert på kriteriene
         $available_rooms = find_available_rooms($check_in, $check_out, $adults, $children);
-      }
-      elseif (isset($_POST['book_room']))
-      {
-
       }
   }
 
@@ -33,9 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Room</title>
     <link rel="stylesheet" href="css/main.css">
+    <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 </head>
 
-<?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
+
 <!--Container for tabs-->
 <div class="tabs">
   <input type="radio" name="tabs" id="tabone" checked="checked">
@@ -45,11 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
     <form method="post" class="vertical_form">
     
     <!--Input for check-in date -->    
-    <label for="check_in">Check-in Dato:</label>
+    <label for="check_in">Check-in Date:</label>
         <input type="date" id="start_date" name="start_date" required>
         
         <!--Input for check-out date-->
-        <label for="check_out">Check-out Dato:</label>
+        <label for="check_out">Check-out Date:</label>
         <input type="date" id="end_date" name="end_date" required>
 
         </select>
@@ -62,8 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         <input type="number" id="children" name="children" min="0" max="3" required>
 
        <!--Input for guest_name-->
-       <label for="guest_name">Guests Name:</label>
-        <input type="name" id="guest_name" name="guest_name"  required>
+       <label for="guest_name"> Your name:</label>
+       <input type="text" id="guest_name" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>" disabled>
 
         <!--Submit button to send form data-->
         <input type="submit" name="check_dates" value="Check available rooms">
@@ -72,11 +69,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
 
 
     <?php
+    // Sjekk om det er tilgjengelige rom, og vis dem
     if (isset($available_rooms) && !empty($available_rooms)):
     ?>
 
       <h3> Available rooms: </h3>
       <?php
+      //loop gjennom alle tilgjengelige rom og vis detaljer
         foreach ($available_rooms as $room): 
       ?>
           <div class="room">
@@ -84,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
             <p>Type: <?php echo htmlspecialchars($room["type"]); ?> </p>
             <p>Capacity: <?php echo $room["capacity"]["adults"]; ?> adults,
             <?php echo $room["capacity"]["children"]; ?> children </p>
+              <!-- Form for å booke valgt rom -->
               <form method="post" action="">
                   <input type="hidden" name="room_id" value=" <?php echo $room["id"]; ?>">
                   <input type="hidden" name="start_date" value="<?php echo htmlspecialchars($check_in); ?>">
@@ -99,8 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
         <?php endif; ?>
 
         <?php
+        //sjekker om brukeren har sendt en booking request
         if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["book_room"]))
         {
+          //hent booking detaljer fra formen
           $room_id = $_POST['room_id'];
           $check_in = $_POST['start_date'];
           $check_out = $_POST['end_date'];
@@ -116,8 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")
                     <input type="hidden" name="adults" value="<?php echo htmlspecialchars($adults); ?>">
                     <input type="hidden" name="children" value="<?php echo htmlspecialchars($children); ?>">
                     
-                    <label for="guest_name">Guest Name:</label>
-                    <input type="text" id="guest_name" name="guest_name" required>
+                    <input type="hidden" name="guest_name" value="<?php echo htmlspecialchars($_SESSION['username']); ?>">
 
                     <input type="submit" value="Confirm Booking">
 

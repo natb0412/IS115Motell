@@ -48,6 +48,23 @@ function is_admin()
     return isset($_SESSION["user_id"]) && $_SESSION["is_admin"] ?? false;
 }
 
+function require_login()
+{
+    if (!is_logged_in())
+    {
+        header("Location: ../../public/index.php");
+        exit();
+    }
+}
+
+function require_admin()
+{
+    if (!is_admin())
+    {
+        header("Loaction: ../../public/index.php");
+    }
+}
+
 
 
 //ALT AV ROMBOOKING
@@ -118,31 +135,6 @@ function find_available_rooms($start_date, $end_date, $adults, $children)
 }
 
 
-
-function add_booking($room_id, $guest_name, $check_in, $check_out, $adults, $children)
-{
-    //laster inn eksisterende bookinger
-    $bookings = load_data("booking");
-
-    //lager ny booking
-    $new_booking = 
-    [
-        "id" => "BOOK" . (count($bookings) + 1),
-        "room_id" => $room_id,
-        "guest_name" => $guest_name,
-        "start_date" => $check_in,
-        "end_date" => $check_out,
-        "adults" => $adults,
-        "children" => $children
-    ];
-    //legger til ny booking i bookings-arrayen, og lagrer deretter dataen i bookings.php
-    $bookings[] = $new_booking;
-    save_data("booking", $bookings);
-    return $new_booking["id"];
-}
-
-
-
 //ADMINFUNKSJONALITET
 //funksjon til admin "dashboard". Viser om et rom er booka for idag eller imorgen
 function is_room_available($room_id, $start_date, $end_date)
@@ -178,9 +170,6 @@ function update_room($room_id, $name, $description)
     {
         if($room["id"] == $room_id)
         {
-            $room["guest_name"] = "admin";
-            $room["adults"] = 0;
-            $room["children"] = 0;
             $room["name"] = $name;
             $room["description"] = $description;
             $description = $room["description"];
@@ -203,6 +192,10 @@ function set_room_unavailable($room_id, $start_date, $end_date)
     {
         $unavailable_periods[] = 
         [
+            "id" => uniqid(),
+            "adults" => 0,
+            "children" => 0,
+            "guest_name" => "admin",
             "room_id" => $room_id,
             "start_date" => $start_date,
             "end_date" => $end_date

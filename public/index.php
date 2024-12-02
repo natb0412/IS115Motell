@@ -28,7 +28,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $_SESSION["username"] = $user["username"];
             $_SESSION["is_admin"] = $user["is_admin"] ?? false;
             $user_found = true;
+
+            if ($_SESSION["is_admin"])
+            {
+              header("Location: ../private/admin/room_admin.php");
+            }
+            else
+            {
             header("Location: sites/booking_page.php");
+            }
             exit();
           }
 

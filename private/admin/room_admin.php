@@ -2,9 +2,8 @@
 //inkluderer config og functions
 require_once "../../public/config.php";
 require_once "../../public/functions.php";
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+require_login();
+require_admin();
 
 //laster inn rom, og bookingstatus
 $rooms = load_data("rooms");
@@ -14,7 +13,7 @@ $booking = load_data("booking");
 //sjekker om det er en post
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    //sjekker om det er update_room, eller set_unavailable som blir posta.
+    //sjekker om det er update_room, set_unavailable, eller delete_booking som blir posta.
     //basert på dette endrer den parametere som står
     if(isset($_POST["update_room"]))
     {
@@ -29,9 +28,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $room_id = $_POST["room_id"];
         $start_date = $_POST["start_date"];
         $end_date = $_POST["end_date"];
-        //setter rom som utilgjengelig i gitt periode(lager en booking)
-        set_room_unavailable($room_id, $start_date, $end_date);
-        $rooms = load_data("rooms");
+        $guest_name = $_SESSION["username"];
+        $adults = 0;
+        $children = 0;
+
+        $make_unavailable = 
+        [
+            'id' => uniqid(),
+            'room_id' => $room_id,
+            'guest_name' => $guest_name,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+            'adults' => $adults,
+            'children' => $children
+        ];
+        $booking = load_data("booking");
+        $booking[] = $make_unavailable;
+
+        save_data("booking", $booking);
     }
 
     elseif (isset($_POST["delete_booking"]))
@@ -66,67 +80,70 @@ foreach ($rooms as &$room)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - <?php echo MOTEL_NAME; ?></title>
+    <link rel="stylesheet" href="css/main.css">
+    <?php include BASE_PATH . '/public/sites/includes/header.php'; ?>
 </head>
 <body>
-    <h1>Administrasjon - <?php echo MOTEL_NAME; ?></h1>
+    <h1>Administrasion - <?php echo MOTEL_NAME; ?></h1>
 
-    <h2>Rom administrasjon</h2>
-
+    <h2>Room administrasion</h2>
+    <!-- Overordna loop for fremvisning av rom -->
     <?php foreach ($rooms as $room): ?>
         <div class="room-info">
-            <h3>Rom <?php echo htmlspecialchars($room['name']); ?></h3>
-            <p>Romtype: <?php echo htmlspecialchars($room['type']); ?></p>
+            <h3>Room <?php echo htmlspecialchars($room['name']); ?></h3>
+            <p>Room type: <?php echo htmlspecialchars($room['type']); ?></p>
             <p>Status: <?php echo $room['is_available'] ? 'Tilgjengelig' : 'Ikke tilgjengelig'; ?></p>
             
             <div class="room-description">
-                <h4>Rombeskrivelse:</h4>
+                <h4>Description:</h4>
                 <p><?php echo htmlspecialchars($room["description"]); ?></p>
             </div>
 
-            <!-- Update Room Form -->
+            <!-- Oppdater rom -->
             <form method="post">
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
-                <label>Navn:
+                <label>Name:
                     <input type="text" name="name" value="<?php echo htmlspecialchars($room['name']); ?>" required>
                 </label>
-                <label>Beskrivelse:
+                <label>Description:
                     <textarea name="description" required><?php echo htmlspecialchars($room['description']); ?></textarea>
                 </label>
-                <button type="submit" name="update_room">Oppdater rom</button>
+                <button type="submit" name="update_room">Update room</button>
             </form>
 
-            <!-- Set Room Unavailable Form -->
+            <!-- Sett rom utilgjengelig -->
             <form method="post">
-                <h4>Sett rom utilgjengelig</h4>
+                <h4>Set room unavailable</h4>
                 <input type="hidden" name="room_id" value="<?php echo htmlspecialchars($room['id']); ?>">
-                <label>Fra dato:
+                <label>From date:
                     <input type="date" name="start_date" required>
                 </label>
-                <label>Til dato:
+                <label>To date:
                     <input type="date" name="end_date" required>
                 </label>
-                <button type="submit" name="set_unavailable">Sett utilgjengelig</button>
+                <button type="submit" name="set_unavailable">Set unavailable</button>
             </form>
 
-            <!-- Display Bookings for the Room -->
+            <!-- Vis bookinger for rommet -->
             <?php 
-            // Filter bookings for the current room
-            $current_bookings = array_filter($booking, function($b) use ($room) {
+            // Filtrer bookinger for rommet
+            $current_bookings = array_filter($booking, function($b) use ($room)
+            {
                 return $b['room_id'] == $room['id'];
             });
             ?>
 
             <?php if (!empty($current_bookings)): ?>
-                <h4>Aktuelle Bookinger:</h4>
+                <h4>Bookings:</h4>
                 <table>
                     <thead>
                         <tr>
-                            <th>Gjest navn</th>
-                            <th>Fra dato</th>
-                            <th>Til dato</th>
-                            <th>Voksne</th>
-                            <th>Barn</th>
-                            <th>Handlinger</th>
+                            <th>Name</th>
+                            <th>From date</th>
+                            <th>To date</th>
+                            <th>Adults</th>
+                            <th>Children</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -139,8 +156,8 @@ foreach ($rooms as &$room)
                                 <td><?php echo htmlspecialchars($book['children']); ?></td>
                                 <td>
                                     <form method="post">
-                                        <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($book['id']); ?>">
-                                        <button type="submit" name="delete_booking">Slett booking</button>
+                                        <input type="hidden" name="booking_id" value="<?php echo htmlspecialchars($book['id']) ?? 666; ?>">
+                                        <button type="submit" name="delete_booking">Delete booking</button>
                                     </form>
                                 </td>
                             </tr>
@@ -149,7 +166,7 @@ foreach ($rooms as &$room)
                 </table>
 
             <?php else: ?>
-                <p>Ingen bookinger for dette rommet.</p>
+                <p>No bookings for this room.</p>
             <?php endif; ?>
         </div>
 
