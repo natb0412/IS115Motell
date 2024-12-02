@@ -3,6 +3,7 @@ require_once "../public/functions.php";
 
 //Laster inn bruker
 $users = load_data("users");
+$error_message = "";
 
 
 //Sjekker om det er et post
